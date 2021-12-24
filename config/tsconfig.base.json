@@ -1,17 +1,20 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
     "compilerOptions": {
-        "lib": ["DOM", "ESNext"],
-        "module": "CommonJS",
-
-        "moduleResolution": "node",
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-
-        "strict": true,
-        "forceConsistentCasingInFileNames": true,
-
+        "allowJs": true,
+        "declaration": true,
         "downlevelIteration": true,
-        "removeComments": true
+        "removeComments": false,
+        "sourceMap": true,
+        "strict": true,
+        "exactOptionalPropertyTypes": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "moduleResolution": "Node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true
     }
 }

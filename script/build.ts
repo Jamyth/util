@@ -9,7 +9,7 @@ require('./lint');
 
 function build() {
     logger.task('Build and Transpile');
-    spawn('tsc', ['--project', path.join(__dirname, '../config/tsconfig.src.json')], 'Build Failed.');
+    spawn('tsc', ['--build', path.join(__dirname, '../tsconfig.json')], 'Build Failed.');
 }
 
 build();

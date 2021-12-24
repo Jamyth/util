@@ -2,9 +2,11 @@
     "$schema": "https://json.schemastore.org/tsconfig",
     "extends": "./tsconfig.base.json",
     "compilerOptions": {
-        "target": "ES5",
+        "lib": ["ES2020"],
+        "module": "CommonJS",
+        "target": "ES2015",
         "noEmit": true,
-        "rootDir": "../script"
+        "rootDir": "../script/"
     },
     "include": ["../script"]
 }
