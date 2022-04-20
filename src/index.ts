@@ -24,3 +24,4 @@ export * from './hooks/usePrevious';
 export * from './hooks/useWhyDidYouUpdate';
 export * from './hooks/useWillUnmountEffect';
 export * from './type';
+export * from './web';
