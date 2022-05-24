@@ -1,42 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1642647076035" clover="3.2.0">
-  <project timestamp="1642647076036" name="All files">
-    <metrics statements="467" coveredstatements="410" conditionals="207" coveredconditionals="185" methods="134" coveredmethods="100" elements="808" coveredelements="695" complexity="0" loc="467" ncloc="467" packages="4" files="25" classes="25"/>
+<coverage generated="1653400294426" clover="3.2.0">
+  <project timestamp="1653400294426" name="All files">
+    <metrics statements="632" coveredstatements="449" conditionals="288" coveredconditionals="188" methods="167" coveredmethods="101" elements="1087" coveredelements="738" complexity="0" loc="632" ncloc="632" packages="6" files="30" classes="30"/>
     <package name="src">
-      <metrics statements="26" coveredstatements="26" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="index.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/index.ts">
-        <metrics statements="26" coveredstatements="26" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
+      <metrics statements="45" coveredstatements="45" conditionals="3" coveredconditionals="3" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/index.ts">
+        <metrics statements="45" coveredstatements="45" conditionals="3" coveredconditionals="3" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="36" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="50" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.core">
       <metrics statements="370" coveredstatements="347" conditionals="186" coveredconditionals="176" methods="107" coveredmethods="93"/>
-      <file name="ArrayUtil.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/core/ArrayUtil.ts">
+      <file name="ArrayUtil.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/core/ArrayUtil.ts">
         <metrics statements="77" coveredstatements="77" conditionals="45" coveredconditionals="45" methods="28" coveredmethods="28"/>
         <line num="2" count="35" type="stmt"/>
         <line num="6" count="6" type="stmt"/>
@@ -114,9 +133,9 @@
         <line num="170" count="5" type="stmt"/>
         <line num="171" count="10" type="stmt"/>
         <line num="173" count="5" type="stmt"/>
-        <line num="176" count="2" type="stmt"/>
+        <line num="176" count="3" type="stmt"/>
       </file>
-      <file name="DateUtil.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/core/DateUtil.ts">
+      <file name="DateUtil.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/core/DateUtil.ts">
         <metrics statements="44" coveredstatements="43" conditionals="24" coveredconditionals="23" methods="11" coveredmethods="11"/>
         <line num="4" count="4" type="cond" truecount="1" falsecount="0"/>
         <line num="5" count="2" type="stmt"/>
@@ -161,11 +180,11 @@
         <line num="116" count="16" type="stmt"/>
         <line num="117" count="16" type="stmt"/>
         <line num="119" count="16" type="stmt"/>
-        <line num="122" count="2" type="stmt"/>
+        <line num="122" count="3" type="stmt"/>
       </file>
-      <file name="DistributionGenerator.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/core/DistributionGenerator.ts">
+      <file name="DistributionGenerator.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/core/DistributionGenerator.ts">
         <metrics statements="28" coveredstatements="27" conditionals="5" coveredconditionals="4" methods="3" coveredmethods="3"/>
-        <line num="1" count="2" type="stmt"/>
+        <line num="1" count="3" type="stmt"/>
         <line num="4" count="3003" type="stmt"/>
         <line num="5" count="3003" type="stmt"/>
         <line num="6" count="3003" type="stmt"/>
@@ -188,13 +207,13 @@
         <line num="41" count="2002" type="stmt"/>
         <line num="43" count="2002" type="stmt"/>
         <line num="44" count="2002" type="cond" truecount="2" falsecount="0"/>
-        <line num="45" count="1001" type="stmt"/>
-        <line num="46" count="1001" type="stmt"/>
-        <line num="48" count="1001" type="stmt"/>
-        <line num="49" count="1001" type="stmt"/>
+        <line num="45" count="1000" type="stmt"/>
+        <line num="46" count="1000" type="stmt"/>
+        <line num="48" count="1002" type="stmt"/>
+        <line num="49" count="1002" type="stmt"/>
         <line num="52" count="2002" type="stmt"/>
       </file>
-      <file name="EnumUtil.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/core/EnumUtil.ts">
+      <file name="EnumUtil.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/core/EnumUtil.ts">
         <metrics statements="8" coveredstatements="8" conditionals="1" coveredconditionals="1" methods="4" coveredmethods="4"/>
         <line num="10" count="4" type="stmt"/>
         <line num="11" count="12" type="stmt"/>
@@ -203,9 +222,9 @@
         <line num="23" count="13" type="cond" truecount="1" falsecount="0"/>
         <line num="24" count="4" type="stmt"/>
         <line num="26" count="9" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
       </file>
-      <file name="ErrorUtil.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/core/ErrorUtil.ts">
+      <file name="ErrorUtil.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/core/ErrorUtil.ts">
         <metrics statements="13" coveredstatements="10" conditionals="11" coveredconditionals="10" methods="2" coveredmethods="1"/>
         <line num="6" count="7" type="cond" truecount="5" falsecount="0"/>
         <line num="7" count="4" type="stmt"/>
@@ -219,25 +238,25 @@
         <line num="20" count="2" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
         <line num="26" count="3" type="stmt"/>
-        <line num="30" count="2" type="stmt"/>
+        <line num="30" count="3" type="stmt"/>
       </file>
-      <file name="HashUtil.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/core/HashUtil.ts">
+      <file name="HashUtil.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/core/HashUtil.ts">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="4" count="2982" type="stmt"/>
-        <line num="5" count="2982" type="stmt"/>
-        <line num="6" count="11928" type="stmt"/>
-        <line num="7" count="11928" type="stmt"/>
-        <line num="8" count="11928" type="stmt"/>
-        <line num="10" count="2982" type="stmt"/>
-        <line num="13" count="3" type="stmt"/>
+        <line num="4" count="2965" type="stmt"/>
+        <line num="5" count="2965" type="stmt"/>
+        <line num="6" count="11860" type="stmt"/>
+        <line num="7" count="11860" type="stmt"/>
+        <line num="8" count="11860" type="stmt"/>
+        <line num="10" count="2965" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
       </file>
-      <file name="IDGenerator.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/core/IDGenerator.ts">
+      <file name="IDGenerator.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/core/IDGenerator.ts">
         <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
       </file>
-      <file name="NumberUtil.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/core/NumberUtil.ts">
+      <file name="NumberUtil.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/core/NumberUtil.ts">
         <metrics statements="25" coveredstatements="23" conditionals="23" coveredconditionals="20" methods="9" coveredmethods="8"/>
         <line num="2" count="9" type="cond" truecount="1" falsecount="0"/>
         <line num="3" count="3" type="stmt"/>
@@ -263,9 +282,9 @@
         <line num="69" count="27" type="stmt"/>
         <line num="71" count="6" type="stmt"/>
         <line num="75" count="16" type="stmt"/>
-        <line num="78" count="2" type="stmt"/>
+        <line num="78" count="3" type="stmt"/>
       </file>
-      <file name="ObjectUtil.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/core/ObjectUtil.ts">
+      <file name="ObjectUtil.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/core/ObjectUtil.ts">
         <metrics statements="59" coveredstatements="58" conditionals="28" coveredconditionals="28" methods="16" coveredmethods="16"/>
         <line num="4" count="3" type="stmt"/>
         <line num="5" count="3" type="cond" truecount="2" falsecount="0"/>
@@ -325,9 +344,9 @@
         <line num="162" count="4" type="stmt"/>
         <line num="163" count="16" type="stmt"/>
         <line num="164" count="4" type="stmt"/>
-        <line num="167" count="2" type="stmt"/>
+        <line num="167" count="3" type="stmt"/>
       </file>
-      <file name="PromiseUtil.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/core/PromiseUtil.ts">
+      <file name="PromiseUtil.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/core/PromiseUtil.ts">
         <metrics statements="10" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="11" coveredmethods="6"/>
         <line num="2" count="0" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
@@ -338,23 +357,23 @@
         <line num="21" count="2" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
-        <line num="27" count="2" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
       </file>
-      <file name="RandomUtil.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/core/RandomUtil.ts">
+      <file name="RandomUtil.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/core/RandomUtil.ts">
         <metrics statements="9" coveredstatements="9" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
-        <line num="1" count="2" type="stmt"/>
+        <line num="1" count="3" type="stmt"/>
         <line num="4" count="301" type="stmt"/>
         <line num="5" count="301" type="cond" truecount="2" falsecount="0"/>
         <line num="9" count="300" type="stmt"/>
-        <line num="13" count="1987" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="1969" type="cond" truecount="1" falsecount="0"/>
         <line num="14" count="1" type="stmt"/>
-        <line num="16" count="1986" type="stmt"/>
-        <line num="17" count="1986" type="stmt"/>
-        <line num="20" count="2" type="stmt"/>
+        <line num="16" count="1968" type="stmt"/>
+        <line num="17" count="1968" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
       </file>
-      <file name="ReactUtil.tsx" path="/Users/jamythluk/Desktop/Work/project/util/src/core/ReactUtil.tsx">
+      <file name="ReactUtil.tsx" path="/Users/jamyth0712/Desktop/code/projects/util/src/core/ReactUtil.tsx">
         <metrics statements="24" coveredstatements="13" conditionals="6" coveredconditionals="2" methods="9" coveredmethods="4"/>
-        <line num="1" count="2" type="stmt"/>
+        <line num="1" count="3" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="15" count="0" type="cond" truecount="0" falsecount="1"/>
@@ -379,7 +398,7 @@
         <line num="80" count="3" type="stmt"/>
         <line num="83" count="2" type="stmt"/>
       </file>
-      <file name="TextUtil.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/core/TextUtil.ts">
+      <file name="TextUtil.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/core/TextUtil.ts">
         <metrics statements="17" coveredstatements="17" conditionals="11" coveredconditionals="11" methods="6" coveredmethods="6"/>
         <line num="9" count="13" type="cond" truecount="3" falsecount="0"/>
         <line num="10" count="4" type="stmt"/>
@@ -397,9 +416,9 @@
         <line num="38" count="5" type="stmt"/>
         <line num="41" count="14" type="stmt"/>
         <line num="46" count="5" type="stmt"/>
-        <line num="49" count="2" type="stmt"/>
+        <line num="49" count="3" type="stmt"/>
       </file>
-      <file name="URLUtil.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/core/URLUtil.ts">
+      <file name="URLUtil.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/core/URLUtil.ts">
         <metrics statements="27" coveredstatements="27" conditionals="18" coveredconditionals="18" methods="1" coveredmethods="1"/>
         <line num="17" count="42" type="cond" truecount="1" falsecount="0"/>
         <line num="18" count="2" type="stmt"/>
@@ -427,9 +446,9 @@
         <line num="53" count="25" type="cond" truecount="2" falsecount="0"/>
         <line num="54" count="17" type="cond" truecount="4" falsecount="0"/>
         <line num="56" count="8" type="stmt"/>
-        <line num="60" count="2" type="stmt"/>
+        <line num="60" count="3" type="stmt"/>
       </file>
-      <file name="VersionComparator.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/core/VersionComparator.ts">
+      <file name="VersionComparator.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/core/VersionComparator.ts">
         <metrics statements="19" coveredstatements="19" conditionals="11" coveredconditionals="11" methods="1" coveredmethods="1"/>
         <line num="12" count="39" type="stmt"/>
         <line num="13" count="39" type="cond" truecount="1" falsecount="0"/>
@@ -449,15 +468,15 @@
         <line num="43" count="13" type="cond" truecount="1" falsecount="0"/>
         <line num="44" count="4" type="stmt"/>
         <line num="47" count="9" type="stmt"/>
-        <line num="50" count="2" type="stmt"/>
+        <line num="50" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.decorator">
       <metrics statements="23" coveredstatements="23" conditionals="13" coveredconditionals="8" methods="7" coveredmethods="7"/>
-      <file name="Memo.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/decorator/Memo.ts">
+      <file name="Memo.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/decorator/Memo.ts">
         <metrics statements="12" coveredstatements="12" conditionals="8" coveredconditionals="5" methods="4" coveredmethods="4"/>
         <line num="9" count="23" type="cond" truecount="1" falsecount="1"/>
-        <line num="10" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="3" type="cond" truecount="1" falsecount="0"/>
         <line num="11" count="2" type="stmt"/>
         <line num="17" count="2" type="cond" truecount="1" falsecount="1"/>
         <line num="19" count="2" type="stmt"/>
@@ -469,9 +488,9 @@
         <line num="26" count="23" type="stmt"/>
         <line num="28" count="2" type="cond" truecount="1" falsecount="1"/>
       </file>
-      <file name="Throttle.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/decorator/Throttle.ts">
+      <file name="Throttle.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/decorator/Throttle.ts">
         <metrics statements="11" coveredstatements="11" conditionals="5" coveredconditionals="3" methods="3" coveredmethods="3"/>
-        <line num="8" count="2" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="15" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="17" count="1" type="stmt"/>
@@ -486,7 +505,7 @@
     </package>
     <package name="src.hooks">
       <metrics statements="48" coveredstatements="14" conditionals="8" coveredconditionals="1" methods="20" coveredmethods="0"/>
-      <file name="useAPI.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/hooks/useAPI.ts">
+      <file name="useAPI.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/hooks/useAPI.ts">
         <metrics statements="12" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -501,7 +520,7 @@
         <line num="39" count="0" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
       </file>
-      <file name="useBool.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/hooks/useBool.ts">
+      <file name="useBool.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/hooks/useBool.ts">
         <metrics statements="6" coveredstatements="2" conditionals="1" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="12" count="1" type="cond" truecount="0" falsecount="1"/>
@@ -510,21 +529,21 @@
         <line num="15" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
       </file>
-      <file name="useDidMountEffect.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/hooks/useDidMountEffect.ts">
+      <file name="useDidMountEffect.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/hooks/useDidMountEffect.ts">
         <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
       </file>
-      <file name="useForceUpdate.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/hooks/useForceUpdate.ts">
+      <file name="useForceUpdate.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/hooks/useForceUpdate.ts">
         <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
       </file>
-      <file name="usePrevious.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/hooks/usePrevious.ts">
+      <file name="usePrevious.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/hooks/usePrevious.ts">
         <metrics statements="6" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -533,7 +552,7 @@
         <line num="6" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
       </file>
-      <file name="useWhyDidYouUpdate.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/hooks/useWhyDidYouUpdate.ts">
+      <file name="useWhyDidYouUpdate.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/hooks/useWhyDidYouUpdate.ts">
         <metrics statements="12" coveredstatements="2" conditionals="5" coveredconditionals="1" methods="4" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -548,12 +567,179 @@
         <line num="46" count="0" type="stmt"/>
         <line num="58" count="0" type="stmt"/>
       </file>
-      <file name="useWillUnmountEffect.ts" path="/Users/jamythluk/Desktop/Work/project/util/src/hooks/useWillUnmountEffect.ts">
+      <file name="useWillUnmountEffect.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/hooks/useWillUnmountEffect.ts">
         <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.web">
+      <metrics statements="72" coveredstatements="6" conditionals="47" coveredconditionals="0" methods="11" coveredmethods="0"/>
+      <file name="BrowserUtil.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/web/BrowserUtil.ts">
+        <metrics statements="42" coveredstatements="1" conditionals="35" coveredconditionals="0" methods="8" coveredmethods="0"/>
+        <line num="11" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="49" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="54" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="60" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="61" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="86" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="93" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="100" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="103" count="1" type="stmt"/>
+      </file>
+      <file name="ClipboardUtil.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/web/ClipboardUtil.ts">
+        <metrics statements="26" coveredstatements="1" conditionals="12" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="39" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+      </file>
+      <file name="LocalStorageUtil.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/web/LocalStorageUtil.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+      <file name="SessionStorageUtil.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/web/SessionStorageUtil.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.web.internal">
+      <metrics statements="74" coveredstatements="14" conditionals="31" coveredconditionals="0" methods="22" coveredmethods="1"/>
+      <file name="StorageHelper.ts" path="/Users/jamyth0712/Desktop/code/projects/util/src/web/internal/StorageHelper.ts">
+        <metrics statements="74" coveredstatements="14" conditionals="31" coveredconditionals="0" methods="22" coveredmethods="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="35" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="49" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="60" count="2" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="64" count="2" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="66" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="73" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="78" count="2" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="81" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="82" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="84" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="85" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="89" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
+        <line num="99" count="2" type="stmt"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="102" count="0" type="stmt"/>
+        <line num="103" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="104" count="0" type="stmt"/>
+        <line num="106" count="0" type="stmt"/>
+        <line num="109" count="0" type="stmt"/>
+        <line num="112" count="0" type="stmt"/>
+        <line num="115" count="2" type="stmt"/>
+        <line num="116" count="0" type="stmt"/>
+        <line num="117" count="0" type="stmt"/>
+        <line num="119" count="0" type="stmt"/>
+        <line num="124" count="0" type="stmt"/>
+        <line num="125" count="0" type="stmt"/>
+        <line num="136" count="0" type="stmt"/>
+        <line num="137" count="0" type="stmt"/>
+        <line num="138" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="139" count="0" type="stmt"/>
+        <line num="140" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="141" count="0" type="stmt"/>
+        <line num="144" count="0" type="stmt"/>
+        <line num="146" count="0" type="stmt"/>
+        <line num="152" count="0" type="stmt"/>
       </file>
     </package>
   </project>
