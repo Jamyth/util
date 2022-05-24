@@ -18,11 +18,11 @@ function min(list: (number | undefined | null)[]): number {
  */
 function formatWithComma(value: number | null): string {
     if (value !== null && Number.isFinite(value)) {
-        const parts = value.toString().split('.');
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        return parts.join('.');
+        const parts = value.toString().split(".");
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return parts.join(".");
     } else {
-        return '-';
+        return "-";
     }
 }
 
@@ -36,9 +36,9 @@ function safeNumber(value: number, maxScale: number) {
     return Number(value.toFixed(maxScale));
 }
 
-function rounding(value: number, algorithm: 'round' | 'ceil' | 'floor', maxScale: number): number {
+function rounding(value: number, algorithm: "round" | "ceil" | "floor", maxScale: number): number {
     if (!Number.isInteger(maxScale) || maxScale < 0 || maxScale > 10) {
-        throw new Error('[util] NumberUtil.rounding maxScale must be an integer in range [0, 10]');
+        throw new Error("[util] NumberUtil.rounding maxScale must be an integer in range [0, 10]");
     }
     if (!Number.isFinite(value)) {
         return value;
@@ -63,15 +63,15 @@ function rounding(value: number, algorithm: 'round' | 'ceil' | 'floor', maxScale
     const precision = maxScale == null ? 0 : maxScale >= 0 ? Math.min(maxScale, 292) : Math.max(maxScale, -292);
     if (precision) {
         // Shift with exponential notation to avoid floating-point issues.
-        let pair = `${value}e`.split('e');
+        let pair = `${value}e`.split("e");
         const roundedValue = func(`${pair[0]}e${Number(pair[1]) + precision}`);
-        pair = `${roundedValue}e`.split('e');
+        pair = `${roundedValue}e`.split("e");
         return Number(`${pair[0]}e${Number(pair[1]) - precision}`);
     }
     return func(value);
 }
 
-function roundingToString(value: number, algorithm: 'round' | 'ceil' | 'floor', scale: number): string {
+function roundingToString(value: number, algorithm: "round" | "ceil" | "floor", scale: number): string {
     return rounding(value, algorithm, scale).toFixed(scale);
 }
 

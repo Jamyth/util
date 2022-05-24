@@ -1,15 +1,15 @@
-export type DayStartOrEnd = 'day-end' | 'day-start';
+export type DayStartOrEnd = "day-end" | "day-start";
 
 function daysBeforeToday(days: number, type: DayStartOrEnd): Date {
     if (days < 0) {
-        throw new Error('[util] Days must be >=0, or use DateUtil.daysAfterToday');
+        throw new Error("[util] Days must be >=0, or use DateUtil.daysAfterToday");
     }
     return dateRelativeTo(new Date(), -days, type);
 }
 
 function daysAfterToday(days: number, type: DayStartOrEnd): Date {
     if (days < 0) {
-        throw new Error('[util] Days must be >=0, or use DateUtil.daysBeforeToday');
+        throw new Error("[util] Days must be >=0, or use DateUtil.daysBeforeToday");
     }
     return dateRelativeTo(new Date(), days, type);
 }
@@ -20,14 +20,14 @@ function today(type: DayStartOrEnd): Date {
 
 function daysBefore(date: Date, days: number, type: DayStartOrEnd): Date {
     if (days < 0) {
-        throw new Error('[util] Days must be >=0, or use DateUtil.daysAfter');
+        throw new Error("[util] Days must be >=0, or use DateUtil.daysAfter");
     }
     return dateRelativeTo(date, -days, type);
 }
 
 function daysAfter(date: Date, days: number, type: DayStartOrEnd): Date {
     if (days < 0) {
-        throw new Error('[util] Days must be >=0, or use DateUtil.daysBefore');
+        throw new Error("[util] Days must be >=0, or use DateUtil.daysBefore");
     }
     return dateRelativeTo(date, days, type);
 }
@@ -49,40 +49,40 @@ function parse(text: string): Date | null {
 function format(
     date: Date | null,
     type:
-        | 'default'
-        | 'with-time'
-        | 'no-year'
-        | 'no-year-with-time'
-        | 'no-day'
-        | 'chinese'
-        | 'chinese-with-time'
-        | 'time' = 'default',
+        | "default"
+        | "with-time"
+        | "no-year"
+        | "no-year-with-time"
+        | "no-day"
+        | "chinese"
+        | "chinese-with-time"
+        | "time" = "default",
 ): string {
     if (date !== null) {
         const year = date.getFullYear();
-        const month = (date.getMonth() + 1).toString().padStart(2, '0');
-        const day = date.getDate().toString().padStart(2, '0');
-        const timePart = date.toTimeString().split(' ')[0];
+        const month = (date.getMonth() + 1).toString().padStart(2, "0");
+        const day = date.getDate().toString().padStart(2, "0");
+        const timePart = date.toTimeString().split(" ")[0];
         switch (type) {
-            case 'default':
-                return year + '-' + month + '-' + day;
-            case 'with-time':
-                return year + '-' + month + '-' + day + ' ' + timePart;
-            case 'no-year':
-                return month + '/' + day;
-            case 'no-year-with-time':
-                return month + '/' + day + ' ' + timePart;
-            case 'no-day':
-                return year + '-' + month;
-            case 'chinese':
-                return year + '年' + month + '月' + day + '日';
-            case 'chinese-with-time':
-                return year + '年' + month + '月' + day + '日 ' + timePart;
-            case 'time':
+            case "default":
+                return year + "-" + month + "-" + day;
+            case "with-time":
+                return year + "-" + month + "-" + day + " " + timePart;
+            case "no-year":
+                return month + "/" + day;
+            case "no-year-with-time":
+                return month + "/" + day + " " + timePart;
+            case "no-day":
+                return year + "-" + month;
+            case "chinese":
+                return year + "年" + month + "月" + day + "日";
+            case "chinese-with-time":
+                return year + "年" + month + "月" + day + "日 " + timePart;
+            case "time":
                 return timePart;
         }
     }
-    return '-';
+    return "-";
 }
 
 function isSameMinute(time1: Date, time2: Date): boolean {
@@ -90,7 +90,7 @@ function isSameMinute(time1: Date, time2: Date): boolean {
 }
 
 function dateRelativeTo(date: Date, diffDays: number, type: DayStartOrEnd): Date {
-    return type === 'day-end'
+    return type === "day-end"
         ? new Date(date.getFullYear(), date.getMonth(), date.getDate() + diffDays, 23, 59, 59)
         : new Date(date.getFullYear(), date.getMonth(), date.getDate() + diffDays, 0, 0, 0);
 }
@@ -102,8 +102,8 @@ function dateRelativeTo(date: Date, diffDays: number, type: DayStartOrEnd): Date
  * Throws error if date1 or date2 not in valid string.
  */
 function dayDiff(date1: Date | string, date2: Date | string): number {
-    const date1OfDate = typeof date1 === 'string' ? parse(date1) : date1;
-    const date2OfDate = typeof date2 === 'string' ? parse(date2) : date2;
+    const date1OfDate = typeof date1 === "string" ? parse(date1) : date1;
+    const date2OfDate = typeof date2 === "string" ? parse(date2) : date2;
     if (!date1OfDate) {
         throw new Error(`[util] DateUtil.dayDiff date1 invalid: ${date1}`);
     }

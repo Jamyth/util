@@ -1,4 +1,4 @@
-import { HashUtil } from './HashUtil';
+import { HashUtil } from "./HashUtil";
 
 function fromArray<T>(array: T[]): T | null {
     const length = array.length;

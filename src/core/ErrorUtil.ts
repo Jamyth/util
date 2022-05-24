@@ -6,24 +6,24 @@ function serialize(error: unknown): string {
     if (error !== null && error !== undefined && !Number.isNaN(error)) {
         try {
             if (error instanceof Error) {
-                if (error.name === 'AggregateError') {
+                if (error.name === "AggregateError") {
                     // Special case, for Promise.any() error.message is fixed: "All Promises rejected"
                     // Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AggregateError
-                    const errors: unknown[] = error['errors'];
-                    return `[AggregateError]: ${error.message}\n${errors.map((_) => `- ${serialize(_)}`).join('\n')}`;
+                    const errors: unknown[] = error["errors"];
+                    return `[AggregateError]: ${error.message}\n${errors.map((_) => `- ${serialize(_)}`).join("\n")}`;
                 } else {
                     return `[${error.name}]: ${error.message}`;
                 }
             } else if (Array.isArray(error)) {
-                return `[${error.map(serialize).join(', ')}]`;
+                return `[${error.map(serialize).join(", ")}]`;
             } else {
                 return JSON.stringify(error);
             }
         } catch (e) {
-            return '[Unknown]';
+            return "[Unknown]";
         }
     } else {
-        return '[Empty]';
+        return "[Empty]";
     }
 }
 

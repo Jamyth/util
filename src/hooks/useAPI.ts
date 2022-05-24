@@ -1,5 +1,5 @@
-import React from 'react';
-import type { Reducer } from 'react';
+import React from "react";
+import type { Reducer } from "react";
 
 interface State<Request, Response> {
     request: Request;
@@ -7,16 +7,16 @@ interface State<Request, Response> {
     loading: boolean;
 }
 
-type Action<Request, Response> = { type: 'start'; request: Request } | { type: 'load'; data: Response };
+type Action<Request, Response> = { type: "start"; request: Request } | { type: "load"; data: Response };
 
 function reducer<Request extends any[], Response>(
     state: State<Request, Response>,
     action: Action<Request, Response>,
 ): State<Request, Response> {
     switch (action.type) {
-        case 'start':
+        case "start":
             return { ...state, loading: true, request: action.request };
-        case 'load':
+        case "load":
             return { ...state, loading: false, data: action.data };
     }
 }
@@ -30,13 +30,13 @@ export function useAPI<Request extends any[], Response>(
         { request: initialRequest, data: null, loading: false },
     );
     const fetchData = React.useCallback(
-        (newRequest: Request): void => dispatch({ type: 'start', request: newRequest }),
+        (newRequest: Request): void => dispatch({ type: "start", request: newRequest }),
         [],
     );
 
     React.useEffect(() => {
-        dispatch({ type: 'start', request });
-        api(...request).then((data) => dispatch({ type: 'load', data }));
+        dispatch({ type: "start", request });
+        api(...request).then((data) => dispatch({ type: "load", data }));
         // TODO: Review if api change should trigger re-fetch
     }, [request, api, dispatch]);
 

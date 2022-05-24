@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * Return an array of 3 element, representing:

@@ -1,5 +1,5 @@
-export type BrowserOS = 'windows' | 'mac' | 'ios' | 'android' | 'other';
-export type BrowserKernel = 'wechat' | 'webkit' | 'firefox' | 'ie' | 'other'; // WeChat is a special webkit, some features restricted
+export type BrowserOS = "windows" | "mac" | "ios" | "android" | "other";
+export type BrowserKernel = "wechat" | "webkit" | "firefox" | "ie" | "other"; // WeChat is a special webkit, some features restricted
 export interface BrowserNewTabSizeOptions {
     width: number;
     height: number;
@@ -8,41 +8,41 @@ export interface BrowserNewTabSizeOptions {
 }
 
 function os(): BrowserOS {
-    if (navigator.userAgent.toUpperCase().includes('WINDOWS')) {
+    if (navigator.userAgent.toUpperCase().includes("WINDOWS")) {
         // https://stackoverflow.com/a/19176790
-        return 'windows';
+        return "windows";
     } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
         // Also include "Mac" keyword
-        return 'ios';
+        return "ios";
     } else if (/Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        return 'android';
-    } else if (navigator.platform.toUpperCase().includes('MAC')) {
-        return 'mac';
+        return "android";
+    } else if (navigator.platform.toUpperCase().includes("MAC")) {
+        return "mac";
     } else {
-        return 'other';
+        return "other";
     }
 }
 
 function kernel(): BrowserKernel {
     const userAgentUpperCase = navigator.userAgent.toUpperCase();
-    if (userAgentUpperCase.includes('MICROMESSENGER')) {
-        return 'wechat';
-    } else if ('WebkitAppearance' in document.documentElement.style) {
-        return 'webkit';
-    } else if (userAgentUpperCase.includes('FIREFOX') && !userAgentUpperCase.includes('SEAMONKEY')) {
+    if (userAgentUpperCase.includes("MICROMESSENGER")) {
+        return "wechat";
+    } else if ("WebkitAppearance" in document.documentElement.style) {
+        return "webkit";
+    } else if (userAgentUpperCase.includes("FIREFOX") && !userAgentUpperCase.includes("SEAMONKEY")) {
         // https://github.com/keithws/browser-report/blob/6fa7a2bb33ce8b8621b2c4538a1ebefac38af57f/index.js#L64
-        return 'firefox';
-    } else if (userAgentUpperCase.includes('MSIE')) {
+        return "firefox";
+    } else if (userAgentUpperCase.includes("MSIE")) {
         // https://github.com/keithws/browser-report/blob/6fa7a2bb33ce8b8621b2c4538a1ebefac38af57f/index.js#L56
-        return 'ie';
+        return "ie";
     } else {
-        return 'other';
+        return "other";
     }
 }
 
 function isMobile() {
     const system = os();
-    return system === 'ios' || system === 'android';
+    return system === "ios" || system === "android";
 }
 
 function removeElement(element: HTMLElement | null) {
@@ -60,7 +60,7 @@ function scrollTo(position: number, container: Element | null = null) {
     if (container) {
         if (container.scrollTo) {
             try {
-                container.scrollTo({ top: position, behavior: 'smooth' });
+                container.scrollTo({ top: position, behavior: "smooth" });
             } catch (e) {
                 container.scrollTo(0, position);
             }
@@ -70,7 +70,7 @@ function scrollTo(position: number, container: Element | null = null) {
     } else {
         // Some legacy browser may not support DOM element scrollTo({...}) signature, or even scrollTo()
         try {
-            window.scrollTo({ top: position, behavior: 'smooth' });
+            window.scrollTo({ top: position, behavior: "smooth" });
         } catch (e) {
             window.scrollTo(0, position);
         }
@@ -85,11 +85,11 @@ function newTab(url: string, sizeOptions: Partial<BrowserNewTabSizeOptions> = {}
     let features: string | undefined;
     if (Object.keys(sizeOptions).length > 0) {
         features =
-            'toolbar=no,location=no,status=no,menubar=no,resizable=no' +
+            "toolbar=no,location=no,status=no,menubar=no,resizable=no" +
             Object.entries(sizeOptions).map(([key, value]) => `,${key}=${value}`);
     }
 
-    const newWindow = window.open(url, '_blank', features);
+    const newWindow = window.open(url, "_blank", features);
     if (!newWindow) {
         // In case some browser blocks popup, fallback to same tab open
         window.location.href = url;
@@ -97,7 +97,7 @@ function newTab(url: string, sizeOptions: Partial<BrowserNewTabSizeOptions> = {}
 }
 
 function isDarkTheme(): boolean {
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
 
 export const BrowserUtil = Object.freeze({

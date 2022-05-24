@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export function useForceUpdate() {
     const [, setState] = React.useState<any>();

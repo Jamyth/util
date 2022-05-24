@@ -101,7 +101,7 @@ function sortByKey<T extends object, K extends keyof T>(
 
 function chunk<T>(array: readonly T[], sizeOrShape: number | readonly number[]): T[][] {
     let shape: readonly number[];
-    if (typeof sizeOrShape === 'number') {
+    if (typeof sizeOrShape === "number") {
         const size = sizeOrShape;
         if (!(Number.isInteger(size) && size >= 1)) {
             throw new Error(`[util] ArrayUtil.chunk: number group size must be integer and >= 1`);
@@ -131,7 +131,7 @@ function chunk<T>(array: readonly T[], sizeOrShape: number | readonly number[]):
 function generate<T>(length: number, generator: T | ((index: number) => T)): T[] {
     const result: T[] = [];
     for (let i = 0; i < length; i++) {
-        result.push(typeof generator === 'function' ? (generator as (index: number) => T)(i) : generator);
+        result.push(typeof generator === "function" ? (generator as (index: number) => T)(i) : generator);
     }
     return result;
 }
@@ -161,7 +161,7 @@ function compactMap<T, V>(array: readonly T[], callback: (item: T, index: number
     return array
         .map(callback)
         .filter(
-            (_) => _ !== null && _ !== undefined && (typeof _ !== 'number' || !Number.isNaN(_)),
+            (_) => _ !== null && _ !== undefined && (typeof _ !== "number" || !Number.isNaN(_)),
         ) as NonNullable<V>[];
 }
 

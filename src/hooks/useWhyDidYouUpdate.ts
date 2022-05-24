@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 export const useWhyDidYouUpdate: typeof _useWhyDidYouUpdate =
-    process.env.NODE_ENV === 'production' ? () => {} : _useWhyDidYouUpdate;
+    process.env.NODE_ENV === "production" ? () => {} : _useWhyDidYouUpdate;
 
 /**
  * Logs in console the diff in props between renders.
@@ -45,10 +45,10 @@ function _useWhyDidYouUpdate<P extends object>(name: string, props: P): void {
                 // eslint-disable-next-line no-console -- this is intentional as this hook should only be used for debugging and should be removed before deploying to production
                 console.info(
                     `%c[%cwhy-did-you-update%c] %c${name}`,
-                    'color: inherit',
-                    'color: #e36eec',
-                    'color: inherit',
-                    'color: #f38b54',
+                    "color: inherit",
+                    "color: #e36eec",
+                    "color: inherit",
+                    "color: #f38b54",
                     changesObj,
                 );
             }

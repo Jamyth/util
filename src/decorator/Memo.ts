@@ -1,4 +1,4 @@
-import type { AnyFunctionDecorator } from './type';
+import type { AnyFunctionDecorator } from "./type";
 
 /**
  * For pure functions:
@@ -6,7 +6,7 @@ import type { AnyFunctionDecorator } from './type';
  * Memoize the last computed result, and return the same value if given the same input.
  * Input equality is based on JSON.stringify by default.
  */
-const defaultMemoKeyGenerator = (args: any[]) => (args.length ? JSON.stringify(args) : '');
+const defaultMemoKeyGenerator = (args: any[]) => (args.length ? JSON.stringify(args) : "");
 export function Memo(memoKeyGenerator: (args: any[]) => string = defaultMemoKeyGenerator): AnyFunctionDecorator {
     return (target, propertyKey, descriptor) => {
         /**

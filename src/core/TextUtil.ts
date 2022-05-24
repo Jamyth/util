@@ -1,4 +1,4 @@
-function truncate(text: string, maxLength: number, suffix: string = '…') {
+function truncate(text: string, maxLength: number, suffix: string = "…") {
     /**
      * Use Array.from, instead of text.length, because of emojis
      * E.g: "🐱".length === 2
@@ -10,7 +10,7 @@ function truncate(text: string, maxLength: number, suffix: string = '…') {
         throw new Error(`[util] TextUtil.truncate.maxLength must be a positive integer`);
     }
     const chars = Array.from(text);
-    return chars.length > maxLength ? chars.slice(0, maxLength).join('') + suffix : text;
+    return chars.length > maxLength ? chars.slice(0, maxLength).join("") + suffix : text;
 }
 
 /**
@@ -19,9 +19,9 @@ function truncate(text: string, maxLength: number, suffix: string = '…') {
  */
 function splitByLength(text: string, charLength: number, delimiter: string): string {
     if (!Number.isInteger(charLength) || charLength < 1) {
-        throw new Error('[util] TextUtil.splitByLength.charLength must be >= 1');
+        throw new Error("[util] TextUtil.splitByLength.charLength must be >= 1");
     }
-    const matchedResult = text.match(new RegExp(`.{1,${charLength}}`, 'g'));
+    const matchedResult = text.match(new RegExp(`.{1,${charLength}}`, "g"));
     return matchedResult ? matchedResult.join(delimiter) : text;
 }
 
@@ -36,14 +36,14 @@ function interpolate(text: string, ...parameters: string[]): string {
 function stripHTML(html: string): string {
     const decodeHtml = (html: string) => {
         return html
-            .replace(/&nbsp;/g, ' ')
+            .replace(/&nbsp;/g, " ")
             .split(/\r?\n/g)
             .map((line) => line.trim())
-            .join('\n')
+            .join("\n")
             .trim();
     };
 
-    return decodeHtml(html.replace(/(<([^>]+)>)/gi, ''));
+    return decodeHtml(html.replace(/(<([^>]+)>)/gi, ""));
 }
 
 export const TextUtil = Object.freeze({

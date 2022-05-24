@@ -111,7 +111,7 @@ function deepClone<T extends object>(object: T): T {
 
         // Primitive types: null / undefined / number / string / boolean / bigint / symbol / function
         // Because typeof null === "object", we have to judge this case first
-        if (innerObject == null || typeof innerObject !== 'object') {
+        if (innerObject == null || typeof innerObject !== "object") {
             return innerObject;
         }
 

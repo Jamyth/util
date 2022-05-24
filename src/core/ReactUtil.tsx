@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function joinNodes(
     nodes: React.ReactElement[],
@@ -66,7 +66,7 @@ function statics<T extends { [key: string]: React.ComponentType<any> | { [key: s
     const namedComponentMap: { [key: string]: React.ComponentType<any> | { [key: string]: React.ComponentType<any> } } =
         {};
     Object.entries(componentMap).forEach(([key, componentOrMap]) => {
-        if (typeof componentOrMap === 'function') {
+        if (typeof componentOrMap === "function") {
             const Component = componentOrMap;
             namedComponentMap[key] = memo(displayName, (props: any) => <Component {...props} />);
         } else {

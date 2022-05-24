@@ -8,8 +8,8 @@ type ClearOptions =
     | { exceptKeys: string[] | ((key: string) => boolean) };
 
 export class StorageHelper {
-    private static readonly trueBoolValue = 'TRUE';
-    private static readonly falseBoolValue = 'FALSE';
+    private static readonly trueBoolValue = "TRUE";
+    private static readonly falseBoolValue = "FALSE";
 
     constructor(private readonly storage: Storage) {}
 
@@ -17,7 +17,7 @@ export class StorageHelper {
     clear = (options?: ClearOptions): void => {
         try {
             if (options) {
-                if ('keys' in options) {
+                if ("keys" in options) {
                     const { keys } = options;
                     if (Array.isArray(keys)) {
                         keys.forEach((key) => this.storage.removeItem(key));
@@ -81,7 +81,7 @@ export class StorageHelper {
             if (Number.isFinite(numberedData)) {
                 if (validator === undefined) {
                     return numberedData;
-                } else if (typeof validator === 'function') {
+                } else if (typeof validator === "function") {
                     if (validator(numberedData)) {
                         return numberedData;
                     }

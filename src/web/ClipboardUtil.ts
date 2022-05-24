@@ -1,9 +1,9 @@
 function copyText(text: string) {
-    const element = document.createElement('textarea');
+    const element = document.createElement("textarea");
     element.value = text;
-    element.style.position = 'absolute';
-    element.style.left = '-9999px';
-    element.setAttribute('readonly', '');
+    element.style.position = "absolute";
+    element.style.left = "-9999px";
+    element.setAttribute("readonly", "");
     document.body.appendChild(element);
 
     // In case there is already some text selection by user, store the previous selection & recover later
@@ -11,7 +11,7 @@ function copyText(text: string) {
     const selected = selection != null && selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
 
     element.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(element);
 
     if (selection && selected) {
@@ -36,18 +36,18 @@ function copyText(text: string) {
  * - https://github.com/lgarron/clipboard-polyfill
  */
 async function copyImage(base64Image: string) {
-    if ('ClipboardItem' in window && 'write' in navigator.clipboard) {
-        const [base64Metadata, base64String] = base64Image.trim().split(';base64,');
-        if (base64Metadata !== 'data:image/png') {
+    if ("ClipboardItem" in window && "write" in navigator.clipboard) {
+        const [base64Metadata, base64String] = base64Image.trim().split(";base64,");
+        if (base64Metadata !== "data:image/png") {
             // not png format or invalid argument
             return false;
         }
         const unicodeArray = atob(base64String)
-            .split('')
+            .split("")
             .map((_) => _.charCodeAt(0));
         const byteArray = Uint8Array.from(unicodeArray);
-        const blob = new Blob([byteArray], { type: 'image/png' });
-        await navigator.clipboard.write([new window.ClipboardItem({ 'image/png': blob })]);
+        const blob = new Blob([byteArray], { type: "image/png" });
+        await navigator.clipboard.write([new window.ClipboardItem({ "image/png": blob })]);
         return true;
     } else {
         return false;

@@ -6,7 +6,7 @@
  * Return "no-upgrade" if currentVersion is newer than latestVersion
  */
 // eslint-disable-next-line sonarjs/no-duplicate-string -- used as type
-export type ComparisonResult = 'major-upgrade' | 'minor-upgrade' | 'patch-upgrade' | 'no-upgrade';
+export type ComparisonResult = "major-upgrade" | "minor-upgrade" | "patch-upgrade" | "no-upgrade";
 
 function compare(currentVersion: string, latestVersion: string): ComparisonResult {
     const regex = /^\d+\.\d+(\.\d+)?$/;
@@ -17,34 +17,34 @@ function compare(currentVersion: string, latestVersion: string): ComparisonResul
         throw new Error(`[util] invalid version: ${latestVersion}`);
     }
 
-    const [currentMajor, currentMinor, currentPatch = 0] = currentVersion.split('.').map(Number) as [
+    const [currentMajor, currentMinor, currentPatch = 0] = currentVersion.split(".").map(Number) as [
         number,
         number,
         number?,
     ];
-    const [latestMajor, latestMinor, latestPatch = 0] = latestVersion.split('.').map(Number) as [
+    const [latestMajor, latestMinor, latestPatch = 0] = latestVersion.split(".").map(Number) as [
         number,
         number,
         number?,
     ];
 
     if (currentMajor > latestMajor) {
-        return 'no-upgrade';
+        return "no-upgrade";
     } else if (currentMajor < latestMajor) {
-        return 'major-upgrade';
+        return "major-upgrade";
     }
 
     if (currentMinor > latestMinor) {
-        return 'no-upgrade';
+        return "no-upgrade";
     } else if (currentMinor < latestMinor) {
-        return 'minor-upgrade';
+        return "minor-upgrade";
     }
 
     if (currentPatch < latestPatch) {
-        return 'patch-upgrade';
+        return "patch-upgrade";
     }
 
-    return 'no-upgrade';
+    return "no-upgrade";
 }
 
 export const VersionComparator = Object.freeze({
