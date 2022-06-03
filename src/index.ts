@@ -18,18 +18,18 @@ export * from "./decorator/type";
 export * from "./type";
 
 /* eslint-disable @typescript-eslint/consistent-type-imports -- typesafe */
-export let ReactUtil: typeof import("./core/ReactUtil");
-export let useAPI: typeof import("./hooks/useAPI");
-export let useBool: typeof import("./hooks/useBool");
-export let useDidMountEffect: typeof import("./hooks/useDidMountEffect");
-export let useForceUpdate: typeof import("./hooks/useForceUpdate");
-export let usePrevious: typeof import("./hooks/usePrevious");
-export let useWhyDidYouUpdate: typeof import("./hooks/useWhyDidYouUpdate");
-export let useWillUnmountEffect: typeof import("./hooks/useWillUnmountEffect");
-export let BrowserUtil: typeof import("./web/BrowserUtil");
-export let ClipboardUtil: typeof import("./web/ClipboardUtil");
-export let LocalStorageUtil: typeof import("./web/LocalStorageUtil");
-export let SessionStorageUtil: typeof import("./web/SessionStorageUtil");
+export let ReactUtil: typeof import("./core/ReactUtil").ReactUtil;
+export let useAPI: typeof import("./hooks/useAPI").useAPI;
+export let useBool: typeof import("./hooks/useBool").useBool;
+export let useDidMountEffect: typeof import("./hooks/useDidMountEffect").useDidMountEffect;
+export let useForceUpdate: typeof import("./hooks/useForceUpdate").useForceUpdate;
+export let usePrevious: typeof import("./hooks/usePrevious").usePrevious;
+export let useWhyDidYouUpdate: typeof import("./hooks/useWhyDidYouUpdate").useWhyDidYouUpdate;
+export let useWillUnmountEffect: typeof import("./hooks/useWillUnmountEffect").useWillUnmountEffect;
+export let BrowserUtil: typeof import("./web/BrowserUtil").BrowserUtil;
+export let ClipboardUtil: typeof import("./web/ClipboardUtil").ClipboardUtil;
+export let LocalStorageUtil: typeof import("./web/LocalStorageUtil").LocalStorageUtil;
+export let SessionStorageUtil: typeof import("./web/SessionStorageUtil").SessionStorageUtil;
 /* eslint-enable @typescript-eslint/consistent-type-imports */
 
 // Only if window is defined || is browser environment
