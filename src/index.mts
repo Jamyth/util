@@ -1,3 +1,4 @@
+import { createRequire } from "module";
 export * from "./core/ArrayUtil";
 export * from "./core/DateUtil";
 export * from "./core/DistributionGenerator";
@@ -30,6 +31,9 @@ export let BrowserUtil: typeof import("./web/BrowserUtil").BrowserUtil;
 export let ClipboardUtil: typeof import("./web/ClipboardUtil").ClipboardUtil;
 export let LocalStorageUtil: typeof import("./web/LocalStorageUtil").LocalStorageUtil;
 export let SessionStorageUtil: typeof import("./web/SessionStorageUtil").SessionStorageUtil;
+
+const require = createRequire(import.meta.url);
+
 /* eslint-enable @typescript-eslint/consistent-type-imports */
 
 // Only if window is defined || is browser environment

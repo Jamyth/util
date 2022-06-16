@@ -10,9 +10,9 @@ import type {
     MarkAsNullable,
     MarkAsNonNullable,
     StrictRequired,
-} from '../src/type';
+} from "../src/type";
 
-describe('KeysOfType<T, ExpectedValueType>', () => {
+describe("KeysOfType<T, ExpectedValueType>", () => {
     type T = {
         a1: string;
         a2: number;
@@ -32,7 +32,7 @@ describe('KeysOfType<T, ExpectedValueType>', () => {
     //
     // By using a Record utility type, all keys assignable must be included in
     // the object literal declared with KeysOfType<T, string> or an error will be thrown.
-    test('should give the correct union of keys', () => {
+    test("should give the correct union of keys", () => {
         type Test1 = KeysOfType<T, string>;
         const t1: Record<Test1, 1> = { a1: 1, b1: 1 };
 
@@ -81,46 +81,46 @@ describe('KeysOfType<T, ExpectedValueType>', () => {
         };
     });
 
-    test('should throw a type error when assigned with incompatible value', () => {
+    test("should throw a type error when assigned with incompatible value", () => {
         let t1: KeysOfType<T, string>;
         // @ts-expect-error
-        t1 = 'a2';
+        t1 = "a2";
         // @ts-expect-error
-        t1 = 'a3';
+        t1 = "a3";
         // @ts-expect-error
-        t1 = 'a4';
+        t1 = "a4";
         // @ts-expect-error
-        t1 = 'b2';
+        t1 = "b2";
         // @ts-expect-error
-        t1 = 'b3';
+        t1 = "b3";
         // @ts-expect-error
-        t1 = 'b4';
+        t1 = "b4";
 
         let t4_2: KeysOfType<T, { nested1: string }>;
         // @ts-expect-error
-        t4_2 = 'a1';
+        t4_2 = "a1";
         // @ts-expect-error
-        t4_2 = 'a2';
+        t4_2 = "a2";
         // @ts-expect-error
-        t4_2 = 'a3';
+        t4_2 = "a3";
         // @ts-expect-error
-        t4_2 = 'b1';
+        t4_2 = "b1";
         // @ts-expect-error
-        t4_2 = 'b2';
+        t4_2 = "b2";
         // @ts-expect-error
-        t4_2 = 'b3';
+        t4_2 = "b3";
     });
 });
 
-describe('ArrayElement<ArrayType extends readonly unknown[]>', () => {
+describe("ArrayElement<ArrayType extends readonly unknown[]>", () => {
     // Note: use `as const` here to let typescript narrow the type
-    const tuple1 = [1, 'b', true, { d: 0 }] as const;
+    const tuple1 = [1, "b", true, { d: 0 }] as const;
     type Tuple1 = typeof tuple1;
 
-    test('should be assignable by the type of elements of ArrayType', () => {
+    test("should be assignable by the type of elements of ArrayType", () => {
         let t1: ArrayElement<Tuple1>;
         t1 = 1;
-        t1 = 'b';
+        t1 = "b";
         t1 = true;
         t1 = { d: 0 };
 
@@ -132,10 +132,10 @@ describe('ArrayElement<ArrayType extends readonly unknown[]>', () => {
         t2 = Number.NEGATIVE_INFINITY;
 
         let t3: ArrayElement<ReadonlyArray<{ foo: string }>>;
-        t3 = { foo: 'bar' };
-        t3 = { foo: 'baz' };
+        t3 = { foo: "bar" };
+        t3 = { foo: "baz" };
         const t3_temp = {
-            foo: 'baz',
+            foo: "baz",
             note: `
             Assigning "t3_temp" to "t3" should pass because this extra property "note" is
             added to the object when t3_temp is declared, and because this object is not
@@ -145,12 +145,12 @@ describe('ArrayElement<ArrayType extends readonly unknown[]>', () => {
         t3 = t3_temp;
     });
 
-    test('should not be assignable by types other the type of elements of ArrayType', () => {
+    test("should not be assignable by types other the type of elements of ArrayType", () => {
         let t1: ArrayElement<Tuple1>;
         // @ts-expect-error
         t1 = 2;
         // @ts-expect-error
-        t1 = 'c';
+        t1 = "c";
         // @ts-expect-error
         t1 = false;
         // @ts-expect-error
@@ -160,7 +160,7 @@ describe('ArrayElement<ArrayType extends readonly unknown[]>', () => {
         // @ts-expect-error
         t2 = false;
         // @ts-expect-error
-        t2 = 'daz';
+        t2 = "daz";
 
         let t3: ArrayElement<ReadonlyArray<{ foo: string }>>;
         // @ts-expect-error
@@ -168,14 +168,14 @@ describe('ArrayElement<ArrayType extends readonly unknown[]>', () => {
         // @ts-expect-error
         t3 = { foo: false };
         t3 = {
-            foo: 'baz',
+            foo: "baz",
             // @ts-expect-error
             note: 'Assigning an object literal to "t3" triggers the extra property check so this should fail',
         };
     });
 });
 
-describe('MarkAsRequired', () => {
+describe("MarkAsRequired", () => {
     type TestType = {
         zoo: number;
         cow: string;
@@ -183,38 +183,38 @@ describe('MarkAsRequired', () => {
         bar?: number | undefined;
     };
 
-    test('foo and bar are required', () => {
-        let x: MarkAsRequired<TestType, 'foo' | 'bar'>;
+    test("foo and bar are required", () => {
+        let x: MarkAsRequired<TestType, "foo" | "bar">;
 
-        x = { zoo: 10, cow: 'st', foo: '21', bar: 5 };
+        x = { zoo: 10, cow: "st", foo: "21", bar: 5 };
         // @ts-expect-error
-        x = { zoo: 5, cow: 'test' };
+        x = { zoo: 5, cow: "test" };
         // @ts-expect-error
-        x = { zoo: 5, cow: 'test', foo: 'sad' };
+        x = { zoo: 5, cow: "test", foo: "sad" };
         // @ts-expect-error
-        x = { zoo: 5, cow: 'test', foo: 'sad', bar: 'test' };
+        x = { zoo: 5, cow: "test", foo: "sad", bar: "test" };
         // @ts-expect-error
-        x = { zoo: 5, cow: 'test', foo: 10, bar: 5 };
+        x = { zoo: 5, cow: "test", foo: 10, bar: 5 };
     });
 
-    test('foo and cow are required', () => {
-        let x: MarkAsRequired<TestType, 'foo' | 'cow'>;
+    test("foo and cow are required", () => {
+        let x: MarkAsRequired<TestType, "foo" | "cow">;
 
-        x = { zoo: 10, cow: 'st', foo: '21', bar: 5 };
-        x = { zoo: 10, cow: 'st', foo: '21' };
+        x = { zoo: 10, cow: "st", foo: "21", bar: 5 };
+        x = { zoo: 10, cow: "st", foo: "21" };
         // @ts-expect-error
-        x = { zoo: 10, cow: '5' };
+        x = { zoo: 10, cow: "5" };
         // @ts-expect-error
         x = { zoo: 10, bar: 5 };
         // @ts-expect-error
-        x = { zoo: 10, foo: '21' };
+        x = { zoo: 10, foo: "21" };
         // @ts-expect-error
-        x = { zoo: 10, foo: '21', bar: 5, cow: 5 };
-        x = { zoo: 10, foo: '5', cow: 'test' };
+        x = { zoo: 10, foo: "21", bar: 5, cow: 5 };
+        x = { zoo: 10, foo: "5", cow: "test" };
     });
 });
 
-describe('PickOptional', () => {
+describe("PickOptional", () => {
     type TestType = {
         nonNullable: 10;
         anotherNonNullable: 10;
@@ -230,7 +230,7 @@ describe('PickOptional', () => {
 
     let t1: PickOptional<TestType>;
 
-    test('should include only properties from T with keys that are optional', () => {
+    test("should include only properties from T with keys that are optional", () => {
         t1 = {
             optionalNonNullable: 20,
             optionalCanBeUndefined: 21,
@@ -239,14 +239,14 @@ describe('PickOptional', () => {
         };
     });
 
-    test('should allow omitting from T with keys that are optional', () => {
+    test("should allow omitting from T with keys that are optional", () => {
         t1 = { optionalNonNullable: 20 };
         t1 = { optionalCanBeNullAndUndefined: 23 };
         t1 = { optionalCanBeUndefined: 21, optionalCanBeNull: 22, optionalCanBeNullAndUndefined: 23 };
         t1 = {};
     });
 
-    test('should not include any property from T with values with types not assignable to null and undefined', () => {
+    test("should not include any property from T with values with types not assignable to null and undefined", () => {
         // @ts-expect-error
         t1 = { optionalCanBeNullAndUndefined: 23, nonNullable: 10, anotherNonNullable: 10 };
         // @ts-expect-error
@@ -254,7 +254,7 @@ describe('PickOptional', () => {
     });
 });
 
-describe('PickNonNullable', () => {
+describe("PickNonNullable", () => {
     type TestType = {
         nonNullable: 10;
         anotherNonNullable: 10;
@@ -270,11 +270,11 @@ describe('PickNonNullable', () => {
 
     let t1: PickNonNullable<TestType>;
 
-    test('should include only properties from T with values with types not assignable to null and undefined', () => {
+    test("should include only properties from T with values with types not assignable to null and undefined", () => {
         t1 = { nonNullable: 10, anotherNonNullable: 10 };
     });
 
-    test('should not omit any property from T with values with types not assignable to null and undefined', () => {
+    test("should not omit any property from T with values with types not assignable to null and undefined", () => {
         // @ts-expect-error
         t1 = { nonNullable: 10 };
         // @ts-expect-error
@@ -283,7 +283,7 @@ describe('PickNonNullable', () => {
         t1 = {};
     });
 
-    test('should not include any property from T with values with types assignable to null and undefined', () => {
+    test("should not include any property from T with values with types assignable to null and undefined", () => {
         // @ts-expect-error
         t1 = { nonNullable: 10, anotherNonNullable: 10, canBeUndefined: 11, canBeNull: 12 };
         // @ts-expect-error
@@ -293,7 +293,7 @@ describe('PickNonNullable', () => {
     });
 });
 
-describe('NullableKeys', () => {
+describe("NullableKeys", () => {
     type TestType = {
         nonNullable: 10;
         canBeUndefined: 11 | undefined;
@@ -308,24 +308,24 @@ describe('NullableKeys', () => {
 
     let t1: NullableKeys<TestType>;
 
-    test('should return union of keys that correspond to values with types assignable to null and undefined', () => {
-        t1 = 'canBeUndefined';
-        t1 = 'canBeNull';
-        t1 = 'canBeNullAndUndefined';
+    test("should return union of keys that correspond to values with types assignable to null and undefined", () => {
+        t1 = "canBeUndefined";
+        t1 = "canBeNull";
+        t1 = "canBeNullAndUndefined";
 
-        t1 = 'optionalNonNullable';
-        t1 = 'optionalCanBeUndefined';
-        t1 = 'optionalCanBeNull';
-        t1 = 'optionalCanBeNullAndUndefined';
+        t1 = "optionalNonNullable";
+        t1 = "optionalCanBeUndefined";
+        t1 = "optionalCanBeNull";
+        t1 = "optionalCanBeNullAndUndefined";
     });
 
-    test('should not be assignable by keys that correspond to values with types not assignable to null and undefined', () => {
+    test("should not be assignable by keys that correspond to values with types not assignable to null and undefined", () => {
         // @ts-expect-error
-        t1 = 'nonNullable';
+        t1 = "nonNullable";
     });
 });
 
-describe('NonNullableKeys', () => {
+describe("NonNullableKeys", () => {
     type TestType = {
         nonNullable: 10;
         canBeUndefined: 11 | undefined;
@@ -340,52 +340,52 @@ describe('NonNullableKeys', () => {
 
     let t1: NonNullableKeys<TestType>;
 
-    test('should return union of keys that correspond to values with types not assignable to null and undefined', () => {
-        t1 = 'nonNullable';
+    test("should return union of keys that correspond to values with types not assignable to null and undefined", () => {
+        t1 = "nonNullable";
     });
 
-    test('should not be assignable by keys that correspond to values with types assignable to null and undefined', () => {
+    test("should not be assignable by keys that correspond to values with types assignable to null and undefined", () => {
         // @ts-expect-error
-        t1 = 'canBeUndefined';
+        t1 = "canBeUndefined";
         // @ts-expect-error
-        t1 = 'canBeNull';
+        t1 = "canBeNull";
         // @ts-expect-error
-        t1 = 'canBeNullAndUndefined';
+        t1 = "canBeNullAndUndefined";
         // @ts-expect-error
-        t1 = 'optionalNonNullable';
+        t1 = "optionalNonNullable";
         // @ts-expect-error
-        t1 = 'optionalCanBeUndefined';
+        t1 = "optionalCanBeUndefined";
         // @ts-expect-error
-        t1 = 'optionalCanBeNull';
+        t1 = "optionalCanBeNull";
         // @ts-expect-error
-        t1 = 'optionalCanBeNullAndUndefined';
+        t1 = "optionalCanBeNullAndUndefined";
     });
 });
 
-describe('MarkAsNonNullable', () => {
+describe("MarkAsNonNullable", () => {
     type TestType = {
         a: number;
         b: string | null;
         c: string[];
     };
 
-    test('zoo and cow are Nullable', () => {
-        let x: MarkAsNonNullable<TestType, 'a' | 'b'>;
+    test("zoo and cow are Nullable", () => {
+        let x: MarkAsNonNullable<TestType, "a" | "b">;
 
-        x = { a: 1, b: 'b', c: ['c'] };
+        x = { a: 1, b: "b", c: ["c"] };
 
         // @ts-expect-error
-        x = { a: null, b: 'b', c: ['c'] };
+        x = { a: null, b: "b", c: ["c"] };
         // @ts-expect-error
-        x = { a: 1, b: null, c: ['c'] };
+        x = { a: 1, b: null, c: ["c"] };
         // @ts-expect-error
-        x = { a: null, b: null, c: ['c'] };
+        x = { a: null, b: null, c: ["c"] };
         // @ts-expect-error
-        x = { a: 1, b: 'b', c: null };
+        x = { a: 1, b: "b", c: null };
     });
 });
 
-describe('MarkAsOptional', () => {
+describe("MarkAsOptional", () => {
     type TestType = {
         zoo: number;
         cow: string;
@@ -393,34 +393,34 @@ describe('MarkAsOptional', () => {
         foo: string;
     };
 
-    test('zoo and cow are optional', () => {
-        let x: MarkAsOptional<TestType, 'zoo' | 'cow'>;
+    test("zoo and cow are optional", () => {
+        let x: MarkAsOptional<TestType, "zoo" | "cow">;
 
-        x = { foo: 'foo' };
+        x = { foo: "foo" };
         // @ts-expect-error
-        x = { foo: 'foo', zoo: 100, cow: 100 };
+        x = { foo: "foo", zoo: 100, cow: 100 };
 
-        x = { foo: 'foo', cat: 'cat', zoo: 10 };
+        x = { foo: "foo", cat: "cat", zoo: 10 };
         // @ts-expect-error
         x = { zoo: 10 };
         // @ts-expect-error
         x = {};
     });
 
-    test('cat is optional', () => {
-        let x: MarkAsOptional<TestType, 'cat'>;
+    test("cat is optional", () => {
+        let x: MarkAsOptional<TestType, "cat">;
 
-        x = { zoo: 10, cow: 'cow', foo: 'foo' };
+        x = { zoo: 10, cow: "cow", foo: "foo" };
         // @ts-expect-error
-        x = { zoo: 10, cow: 'cow', foo: 'foo', cat: 100 };
+        x = { zoo: 10, cow: "cow", foo: "foo", cat: 100 };
         // @ts-expect-error
-        x = { zoo: 'zoo' };
+        x = { zoo: "zoo" };
         // @ts-expect-error
-        x = { foo: 'foo' };
+        x = { foo: "foo" };
     });
 });
 
-describe('MarkAsNullable', () => {
+describe("MarkAsNullable", () => {
     type TestType = {
         zoo: number;
         cow: string;
@@ -428,39 +428,39 @@ describe('MarkAsNullable', () => {
         foo: string;
     };
 
-    test('zoo and cow are Nullable', () => {
-        let x: MarkAsNullable<TestType, 'zoo' | 'cow'>;
+    test("zoo and cow are Nullable", () => {
+        let x: MarkAsNullable<TestType, "zoo" | "cow">;
 
-        x = { foo: 'foo', zoo: null, cow: 'cow', cat: null };
+        x = { foo: "foo", zoo: null, cow: "cow", cat: null };
 
-        x = { foo: 'foo', zoo: null, cow: null, cat: 'cat' };
+        x = { foo: "foo", zoo: null, cow: null, cat: "cat" };
         // @ts-expect-error
-        x = { foo: 'foo', zoo: 100, cow: 10 };
+        x = { foo: "foo", zoo: 100, cow: 10 };
 
         // @ts-expect-error
-        x = { foo: 'foo', cat: 'cat', zoo: 10 };
+        x = { foo: "foo", cat: "cat", zoo: 10 };
         // @ts-expect-error
         x = { zoo: 10 };
         // @ts-expect-error
         x = {};
     });
 
-    test('cat is Nullable', () => {
-        let x: MarkAsNullable<TestType, 'cat'>;
+    test("cat is Nullable", () => {
+        let x: MarkAsNullable<TestType, "cat">;
 
-        x = { zoo: 10, cow: 'cow', foo: 'foo', cat: null };
+        x = { zoo: 10, cow: "cow", foo: "foo", cat: null };
         // @ts-expect-error
-        x = { zoo: 10, cow: 'cow', foo: 'foo' };
+        x = { zoo: 10, cow: "cow", foo: "foo" };
         // @ts-expect-error
-        x = { zoo: 10, cow: 'cow', foo: 'foo', cat: 100 };
+        x = { zoo: 10, cow: "cow", foo: "foo", cat: 100 };
         // @ts-expect-error
-        x = { zoo: 'zoo' };
+        x = { zoo: "zoo" };
         // @ts-expect-error
-        x = { foo: 'foo' };
+        x = { foo: "foo" };
     });
 });
 
-describe('StrictRequired<T>', () => {
+describe("StrictRequired<T>", () => {
     type TestType = {
         normal: number;
         nullable: number | null;
@@ -470,7 +470,7 @@ describe('StrictRequired<T>', () => {
         allTogether?: number | undefined | null;
     };
 
-    test('All keys are required and removed null | undefined', () => {
+    test("All keys are required and removed null | undefined", () => {
         let test: StrictRequired<TestType>;
 
         // Correct Pass
