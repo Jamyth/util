@@ -1,8 +1,26 @@
 {
     "name": "@iamyth/util",
-    "version": "1.1.10",
-    "main": "cjs/index.cjs",
-    "module": "esm/index.mjs",
+    "version": "1.2.1",
+    "main": "cjs/index.js",
+    "module": "esm/index.js",
+    "exports": {
+        ".": {
+            "import": "./esm/index.js",
+            "require": "./cjs/index.js"
+        },
+        "./core": {
+            "import": "./esm/index.js",
+            "require": "./cjs/index.js"
+        },
+        "./react": {
+            "import": "./esm/react.js",
+            "require": "./cjs/react.js"
+        },
+        "./web": {
+            "import": "./esm/browser.js",
+            "require": "./cjs/browser.js"
+        }
+    },
     "license": "MIT",
     "scripts": {
         "run-script": "ts-node --project config/tsconfig.script.json",

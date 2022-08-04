@@ -19,5 +19,5 @@
         "importsNotUsedAsValues": "preserve",
         "isolatedModules": true
     },
-    "include": ["../src/**/*.ts", "../src/index.cts"]
+    "include": ["../src"]
 }

@@ -10,6 +10,5 @@
         "jsx": "react",
         "suppressImplicitAnyIndexErrors": true
     },
-    "include": ["../config", "../src/", "../test/"],
-    "exclude": ["../src/index.mts"]
+    "include": ["../config", "../src/", "../test/"]
 }
