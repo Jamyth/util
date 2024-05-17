@@ -1,1 +1,1 @@
-module.exports = require('@iamyth/prettier-config');
+module.exports = require("@iamyth/prettier-config");
