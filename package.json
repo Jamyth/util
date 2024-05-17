@@ -3,6 +3,7 @@
     "version": "1.2.1",
     "main": "cjs/index.js",
     "module": "esm/index.js",
+    "type": "module",
     "exports": {
         ".": {
             "import": "./esm/index.js",
@@ -23,11 +24,11 @@
     },
     "license": "MIT",
     "scripts": {
-        "run-script": "ts-node --project config/tsconfig.script.json",
+        "run-script": "tsx --tsconfig config/tsconfig.script.json",
         "format": "yarn run-script script/format.ts",
         "lint": "yarn run-script script/lint.ts",
         "build": "yarn run-script script/build.ts",
-        "test": "jest --config config/jest.config.js --coverage"
+        "test": "jest --config config/jest.config.cjs --coverage"
     },
     "devDependencies": {
         "@iamyth/logger": "1.0.6",
@@ -44,7 +45,7 @@
         "prettier": "2.6.2",
         "react": "18.1.0",
         "ts-jest": "28.0.3",
-        "ts-node": "10.8.0",
+        "tsx": "4.10.4",
         "typescript": "4.6.4"
     }
 }
