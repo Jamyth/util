@@ -11,8 +11,6 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "moduleResolution": "Node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
         "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true,
         "skipLibCheck": true
