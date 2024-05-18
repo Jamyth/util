@@ -1,7 +1,6 @@
 export type StringBasedEnumMap<EnumMap> = { [P in keyof EnumMap]: EnumMap[P] & string };
-export type StringBasedEnumValue<EnumMap> = EnumMap extends StringBasedEnumMap<EnumMap>
-    ? EnumMap[keyof EnumMap]
-    : never;
+export type StringBasedEnumValue<EnumMap> =
+    EnumMap extends StringBasedEnumMap<EnumMap> ? EnumMap[keyof EnumMap] : never;
 
 function toRecord<EnumMap extends StringBasedEnumMap<EnumMap>, V>(
     enumMap: EnumMap,

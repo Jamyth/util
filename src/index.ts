@@ -14,5 +14,4 @@ export * from "./core/URLUtil";
 export * from "./core/VersionComparator";
 export * from "./decorator/Memo";
 export * from "./decorator/Throttle";
-export * from "./decorator/type";
 export * from "./type";

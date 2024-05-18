@@ -8,6 +8,7 @@
         "rootDir": "../",
 
         "jsx": "react-jsx",
+        "ignoreDeprecations": "5.0",
         "suppressImplicitAnyIndexErrors": true
     },
     "include": ["./"]

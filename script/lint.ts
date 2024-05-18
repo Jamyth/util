@@ -1,7 +1,7 @@
-import { spawn } from './spawn';
-import { createConsoleLogger } from '@iamyth/logger';
+import { spawn } from "./spawn.js";
+import { createConsoleLogger } from "@iamyth/logger";
 
-const logger = createConsoleLogger('ESLint');
+const logger = createConsoleLogger("ESLint");
 
-logger.task('Linting codes');
-spawn('eslint', ['--ext', './src/**/*.ts'], 'Lint Error, Please fix !');
+logger.task("Linting codes");
+spawn("eslint", ["--ext", "./src/**/*.ts"], "Lint Error, Please fix !");
