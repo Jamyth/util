@@ -1,6 +1,6 @@
 import { HashUtil } from "./HashUtil";
 
-function fromArray<T>(array: T[]): T | null {
+function fromArray<const T>(array: T[]): T | null {
     const length = array.length;
     return length > 0 ? array[Math.floor(Math.random() * length)] : null;
 }

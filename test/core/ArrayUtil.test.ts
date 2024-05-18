@@ -1,7 +1,7 @@
-import {ArrayUtil} from "../../src/core/ArrayUtil";
+import { ArrayUtil } from "../../src/core/ArrayUtil";
 
 describe("ArrayUtil.sum", () => {
-    type TestEachRowSchema = {input: number[]; expected: number};
+    type TestEachRowSchema = { input: number[]; expected: number };
     test.each`
         input                    | expected
         ${[]}                    | ${0}
@@ -9,35 +9,35 @@ describe("ArrayUtil.sum", () => {
         ${[1, 2, 3]}             | ${6}
         ${[-1, 1, 2, 0]}         | ${2}
         ${[-1, 1, 2, 0, 10, 10]} | ${22}
-    `("returns $expected with input $input", ({input, expected}: TestEachRowSchema) => {
+    `("returns $expected with input $input", ({ input, expected }: TestEachRowSchema) => {
         expect(ArrayUtil.sum(input)).toBe(expected);
     });
 });
 
 describe("ArrayUtil.sumByKey", () => {
-    type TestEachRowSchema = {input: Record<string, unknown>[]; key: string; expected: number};
+    type TestEachRowSchema = { input: Record<string, unknown>[]; key: string; expected: number };
     test.each`
-        input                                   | key      | expected
-        ${[]}                                   | ${"nvm"} | ${0}
-        ${[{a: 10}]}                            | ${"a"}   | ${10}
-        ${[{a: 10, b: ""}, {a: 22, b: ""}]}     | ${"a"}   | ${32}
-        ${[{a: "10", b: ""}, {a: "22", b: ""}]} | ${"a"}   | ${32}
-        ${[{a: 10, b: ""}, {b: ""}]}            | ${"a"}   | ${10}
-        ${[{a: 10, b: ""}, {b: 100}, {b: {}}]}  | ${"b"}   | ${100}
-    `("returns $expected with sum by key $key of [...]", ({input, key, expected}: TestEachRowSchema) => {
+        input                                        | key      | expected
+        ${[]}                                        | ${"nvm"} | ${0}
+        ${[{ a: 10 }]}                               | ${"a"}   | ${10}
+        ${[{ a: 10, b: "" }, { a: 22, b: "" }]}      | ${"a"}   | ${32}
+        ${[{ a: "10", b: "" }, { a: "22", b: "" }]}  | ${"a"}   | ${32}
+        ${[{ a: 10, b: "" }, { b: "" }]}             | ${"a"}   | ${10}
+        ${[{ a: 10, b: "" }, { b: 100 }, { b: {} }]} | ${"b"}   | ${100}
+    `("returns $expected with sum by key $key of [...]", ({ input, key, expected }: TestEachRowSchema) => {
         expect(ArrayUtil.sumByKey(input as any[], key)).toBe(expected);
     });
 });
 
 describe("ArrayUtil.toggleElement", () => {
-    type TestEachRowSchema = {element: number; expected: number[]};
+    type TestEachRowSchema = { element: number; expected: number[] };
     test.each`
         element | expected
         ${4}    | ${[1, 2, 3, 5, 6]}
         ${10}   | ${[1, 2, 3, 4, 5, 6, 10]}
         ${6}    | ${[1, 2, 3, 4, 5]}
         ${1}    | ${[2, 3, 4, 5, 6]}
-    `("toggle $element on [1...6] returns $expected", ({element, expected}: TestEachRowSchema) => {
+    `("toggle $element on [1...6] returns $expected", ({ element, expected }: TestEachRowSchema) => {
         const array = [1, 2, 3, 4, 5, 6];
         expect(ArrayUtil.toggleElement(array, element)).toStrictEqual(expected);
     });
@@ -96,7 +96,7 @@ describe("ArrayUtil.sortBy", () => {
         const extraList2 = [20, 30, 10];
         const extraList3 = [10, 50, 2];
 
-        type TestEachRowSchema = {array: number[]; priorityLists: number[][]; expected: number[]};
+        type TestEachRowSchema = { array: number[]; priorityLists: number[][]; expected: number[] };
         test.each`
             array                     | priorityLists                                       | expected
             ${[]}                     | ${[]}                                               | ${[]}
@@ -120,7 +120,7 @@ describe("ArrayUtil.sortBy", () => {
             ${[10, 50, 20, 30]}       | ${[sortedList, extraList1, extraList2]}             | ${[20, 30, 10, 50]}
             ${[2, 10, 50, 20, 30]}    | ${[sortedList, extraList1, extraList2, extraList3]} | ${[10, 50, 2, 20, 30]}
             ${[2, 2, 10, 50, 20, 30]} | ${[sortedList, extraList1, extraList2, extraList3]} | ${[10, 50, 2, 2, 20, 30]}
-        `("returns expected array from sortBy($array)", ({array, priorityLists, expected}: TestEachRowSchema) => {
+        `("returns expected array from sortBy($array)", ({ array, priorityLists, expected }: TestEachRowSchema) => {
             expect(ArrayUtil.sortBy(array, ...priorityLists)).toStrictEqual(expected);
         });
     });
@@ -136,7 +136,7 @@ describe("ArrayUtil.sortBy", () => {
 
         const sortedList = [Enum.A, Enum.B, Enum.C, Enum.D, Enum.E];
 
-        type TestEachRowSchema = {array: Enum[]; expected: Enum[]};
+        type TestEachRowSchema = { array: Enum[]; expected: Enum[] };
 
         test.each`
             array                                               | expected
@@ -146,7 +146,7 @@ describe("ArrayUtil.sortBy", () => {
             ${[Enum.A, Enum.A, Enum.B]}                         | ${[Enum.A, Enum.A, Enum.B]}
             ${[Enum.E, Enum.D, Enum.A]}                         | ${[Enum.A, Enum.D, Enum.E]}
             ${[Enum.D, Enum.A, Enum.B, Enum.B, Enum.A, Enum.C]} | ${[Enum.A, Enum.A, Enum.B, Enum.B, Enum.C, Enum.D]}
-        `("returns expected array from sortBy($array)", ({array, expected}: TestEachRowSchema) => {
+        `("returns expected array from sortBy($array)", ({ array, expected }: TestEachRowSchema) => {
             expect(ArrayUtil.sortBy(array, sortedList)).toStrictEqual(expected);
         });
     });
@@ -157,30 +157,34 @@ describe("ArrayUtil.sortByKey", () => {
         const sortedList = [10, 20, 30, 40, 50];
         const extraList = [50, 30, 20];
 
-        type TestEachRowSchema = {array: Array<{d: number}>; priorityLists: number[][]; expected: Array<{d: number}>};
+        type TestEachRowSchema = {
+            array: { d: number }[];
+            priorityLists: number[][];
+            expected: { d: number }[];
+        };
         test.each`
-            array                                            | priorityLists              | expected
-            ${[]}                                            | ${[]}                      | ${[]}
-            ${[{d: 2}]}                                      | ${[]}                      | ${[{d: 2}]}
-            ${[{d: 10}]}                                     | ${[]}                      | ${[{d: 10}]}
-            ${[{d: 10}]}                                     | ${[sortedList]}            | ${[{d: 10}]}
-            ${[{d: 20}, {d: 10}]}                            | ${[sortedList]}            | ${[{d: 10}, {d: 20}]}
-            ${[{d: 20}, {d: 10}, {d: 10}]}                   | ${[sortedList]}            | ${[{d: 10}, {d: 10}, {d: 20}]}
-            ${[{d: 20}, {d: 10}, {d: 50}]}                   | ${[sortedList]}            | ${[{d: 10}, {d: 20}, {d: 50}]}
-            ${[{d: 20}, {d: 10}, {d: 50}, {d: 30}, {d: 40}]} | ${[sortedList]}            | ${[{d: 10}, {d: 20}, {d: 30}, {d: 40}, {d: 50}]}
-            ${[{d: 20}, {d: 10}, {d: 50}, {d: 0}, {d: 30}]}  | ${[sortedList]}            | ${[{d: 10}, {d: 20}, {d: 30}, {d: 50}, {d: 0}]}
-            ${[{d: 20}, {d: 10}, {d: 50}]}                   | ${[sortedList, extraList]} | ${[{d: 50}, {d: 20}, {d: 10}]}
-            ${[{d: 20}, {d: 10}, {d: 50}, {d: 30}]}          | ${[sortedList, extraList]} | ${[{d: 50}, {d: 30}, {d: 20}, {d: 10}]}
-            ${[{d: 20}, {d: 1}, {d: 5}, {d: 30}]}            | ${[sortedList, extraList]} | ${[{d: 30}, {d: 20}, {d: 1}, {d: 5}]}
-            ${[{d: 1}, {d: 2}, {d: 3}]}                      | ${[sortedList, extraList]} | ${[{d: 1}, {d: 2}, {d: 3}]}
-        `("returns expected array from sortByKey($array)", ({array, priorityLists, expected}: TestEachRowSchema) => {
+            array                                                      | priorityLists              | expected
+            ${[]}                                                      | ${[]}                      | ${[]}
+            ${[{ d: 2 }]}                                              | ${[]}                      | ${[{ d: 2 }]}
+            ${[{ d: 10 }]}                                             | ${[]}                      | ${[{ d: 10 }]}
+            ${[{ d: 10 }]}                                             | ${[sortedList]}            | ${[{ d: 10 }]}
+            ${[{ d: 20 }, { d: 10 }]}                                  | ${[sortedList]}            | ${[{ d: 10 }, { d: 20 }]}
+            ${[{ d: 20 }, { d: 10 }, { d: 10 }]}                       | ${[sortedList]}            | ${[{ d: 10 }, { d: 10 }, { d: 20 }]}
+            ${[{ d: 20 }, { d: 10 }, { d: 50 }]}                       | ${[sortedList]}            | ${[{ d: 10 }, { d: 20 }, { d: 50 }]}
+            ${[{ d: 20 }, { d: 10 }, { d: 50 }, { d: 30 }, { d: 40 }]} | ${[sortedList]}            | ${[{ d: 10 }, { d: 20 }, { d: 30 }, { d: 40 }, { d: 50 }]}
+            ${[{ d: 20 }, { d: 10 }, { d: 50 }, { d: 0 }, { d: 30 }]}  | ${[sortedList]}            | ${[{ d: 10 }, { d: 20 }, { d: 30 }, { d: 50 }, { d: 0 }]}
+            ${[{ d: 20 }, { d: 10 }, { d: 50 }]}                       | ${[sortedList, extraList]} | ${[{ d: 50 }, { d: 20 }, { d: 10 }]}
+            ${[{ d: 20 }, { d: 10 }, { d: 50 }, { d: 30 }]}            | ${[sortedList, extraList]} | ${[{ d: 50 }, { d: 30 }, { d: 20 }, { d: 10 }]}
+            ${[{ d: 20 }, { d: 1 }, { d: 5 }, { d: 30 }]}              | ${[sortedList, extraList]} | ${[{ d: 30 }, { d: 20 }, { d: 1 }, { d: 5 }]}
+            ${[{ d: 1 }, { d: 2 }, { d: 3 }]}                          | ${[sortedList, extraList]} | ${[{ d: 1 }, { d: 2 }, { d: 3 }]}
+        `("returns expected array from sortByKey($array)", ({ array, priorityLists, expected }: TestEachRowSchema) => {
             expect(ArrayUtil.sortByKey(array, "d", ...priorityLists)).toStrictEqual(expected);
         });
     });
 });
 
 describe("ArrayUtil.chunk", () => {
-    const array: ReadonlyArray<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const array: readonly number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     describe("by shape", () => {
         test("throws if sum of shape elements total does not equal array length", () => {
@@ -193,14 +197,14 @@ describe("ArrayUtil.chunk", () => {
             expect(() => ArrayUtil.chunk(array, [0.9, 8.1])).toThrow();
         });
 
-        type TestEachRowSchema = {shape: number[]; expected: number[][]};
+        type TestEachRowSchema = { shape: number[]; expected: number[][] };
         test.each`
             shape           | expected
             ${[0, 0, 9]}    | ${[[], [], array]}
             ${[1, 3, 2, 3]} | ${[[1], [2, 3, 4], [5, 6], [7, 8, 9]]}
             ${[3, 3, 3]}    | ${[[1, 2, 3], [4, 5, 6], [7, 8, 9]]}
             ${[6, 1, 2]}    | ${[[1, 2, 3, 4, 5, 6], [7], [8, 9]]}
-        `("return expected chunks when shape is $shape", ({shape, expected}: TestEachRowSchema) => {
+        `("return expected chunks when shape is $shape", ({ shape, expected }: TestEachRowSchema) => {
             expect(ArrayUtil.chunk(array, shape)).toStrictEqual(expected);
         });
     });
@@ -212,7 +216,7 @@ describe("ArrayUtil.chunk", () => {
             expect(() => ArrayUtil.chunk(array, NaN)).toThrow();
         });
 
-        type TestEachRowSchema = {size: number; expected: number[][]};
+        type TestEachRowSchema = { size: number; expected: number[][] };
         test.each`
             size  | expected
             ${1}  | ${[[1], [2], [3], [4], [5], [6], [7], [8], [9]]}
@@ -226,59 +230,62 @@ describe("ArrayUtil.chunk", () => {
             ${9}  | ${[[1, 2, 3, 4, 5, 6, 7, 8, 9]]}
             ${10} | ${[[1, 2, 3, 4, 5, 6, 7, 8, 9]]}
             ${11} | ${[[1, 2, 3, 4, 5, 6, 7, 8, 9]]}
-        `("return expected chunks when size is $size", ({size, expected}: TestEachRowSchema) => {
+        `("return expected chunks when size is $size", ({ size, expected }: TestEachRowSchema) => {
             expect(ArrayUtil.chunk(array, size)).toStrictEqual(expected);
         });
     });
 });
 
 describe("ArrayUtil.generate", () => {
-    type TestEachRowSchema = {cnt: number; generator: any; expected: any[]};
+    type TestEachRowSchema = { cnt: number; generator: any; expected: any[] };
 
     test.each`
-        cnt  | generator       | expected
-        ${0} | ${{}}           | ${[]}
-        ${2} | ${{}}           | ${[{}, {}]}
-        ${0} | ${{a: 1, b: 2}} | ${[]}
-        ${2} | ${{a: 1, b: 2}} | ${[{a: 1, b: 2}, {a: 1, b: 2}]}
-    `("returns expected array from generate($cnt, <static-value>)", ({cnt, generator, expected}: TestEachRowSchema) => {
-        expect(ArrayUtil.generate(cnt, generator)).toStrictEqual(expected);
-    });
+        cnt  | generator         | expected
+        ${0} | ${{}}             | ${[]}
+        ${2} | ${{}}             | ${[{}, {}]}
+        ${0} | ${{ a: 1, b: 2 }} | ${[]}
+        ${2} | ${{ a: 1, b: 2 }} | ${[{ a: 1, b: 2 }, { a: 1, b: 2 }]}
+    `(
+        "returns expected array from generate($cnt, <static-value>)",
+        ({ cnt, generator, expected }: TestEachRowSchema) => {
+            expect(ArrayUtil.generate(cnt, generator)).toStrictEqual(expected);
+        },
+    );
 
     test.each`
-        cnt  | generator                          | expected
-        ${0} | ${(index: number) => ({a: index})} | ${[]}
-        ${2} | ${(index: number) => ({a: index})} | ${[{a: 0}, {a: 1}]}
-    `("returns expected array from generate($cnt, <function>)", ({cnt, generator, expected}: TestEachRowSchema) => {
+        cnt  | generator                            | expected
+        ${0} | ${(index: number) => ({ a: index })} | ${[]}
+        ${2} | ${(index: number) => ({ a: index })} | ${[{ a: 0 }, { a: 1 }]}
+    `("returns expected array from generate($cnt, <function>)", ({ cnt, generator, expected }: TestEachRowSchema) => {
         expect(ArrayUtil.generate(cnt, generator)).toStrictEqual(expected);
     });
 });
 
 describe("ArrayUtil.toObject", () => {
     type MapperCallback = (item: any, index: number) => [string, any];
-    type TestEachRowSchema = {array: any[]; mapperCallback: MapperCallback; expected: object};
+    type TestEachRowSchema = { array: any[]; mapperCallback: MapperCallback; expected: object };
     test.each`
-        _id  | array               | mapperCallback                                                       | expected
-        ${0} | ${[]}               | ${((item, index) => [index.toString(), item]) as MapperCallback}     | ${{}}
-        ${1} | ${[1, 2, "a", "b"]} | ${((item, index) => [index.toString(), item]) as MapperCallback}     | ${{0: 1, 1: 2, 2: "a", 3: "b"}}
-        ${2} | ${[1, 2, "a", "b"]} | ${((item, index) => [item.toString(), index]) as MapperCallback}     | ${{1: 0, 2: 1, a: 2, b: 3}}
-        ${3} | ${[1, 2, "a", "b"]} | ${((item, index) => [item.toString(), {a: item}]) as MapperCallback} | ${{1: {a: 1}, 2: {a: 2}, a: {a: "a"}, b: {a: "b"}}}
-    `("returns expected array from toObject()", ({array, mapperCallback, expected}: TestEachRowSchema) => {
+        _id  | array               | mapperCallback                                                         | expected
+        ${0} | ${[]}               | ${((item, index) => [index.toString(), item]) as MapperCallback}       | ${{}}
+        ${1} | ${[1, 2, "a", "b"]} | ${((item, index) => [index.toString(), item]) as MapperCallback}       | ${{ 0: 1, 1: 2, 2: "a", 3: "b" }}
+        ${2} | ${[1, 2, "a", "b"]} | ${((item, index) => [item.toString(), index]) as MapperCallback}       | ${{ 1: 0, 2: 1, a: 2, b: 3 }}
+        ${3} | ${[1, 2, "a", "b"]} | ${((item, index) => [item.toString(), { a: item }]) as MapperCallback} | ${{ 1: { a: 1 }, 2: { a: 2 }, a: { a: "a" }, b: { a: "b" } }}
+    `("returns expected array from toObject()", ({ array, mapperCallback, expected }: TestEachRowSchema) => {
         expect(ArrayUtil.toObject(array, mapperCallback)).toStrictEqual(expected);
     });
 
     test("returns expected array from toObject() with mapperCallback referencing array", () => {
         const array = [1, 2, "a", "b"];
-        const expected = {b: 1, a: 2, 2: "a", 1: "b"};
+        const expected = { b: 1, a: 2, 2: "a", 1: "b" };
         const result = ArrayUtil.toObject(array, (item, index) => [array[array.length - index - 1].toString(), item]);
         expect(result).toStrictEqual(expected);
     });
 });
 
 describe("ArrayUtil.hasIntersection", () => {
-    const obj = {same: "reference"};
+    const obj = { same: "reference" };
 
-    type TestEachRowSchema = {a: number[]; b: number[]; expected: boolean};
+    type TestEachRowSchema = { a: number[]; b: number[]; expected: boolean };
     // prettier-ignore
     test.each`
         a           | b           | expected
@@ -298,12 +305,12 @@ describe("ArrayUtil.hasIntersection", () => {
 describe("ArrayUtil.compactMap", () => {
     test("happy path tests", () => {
         expect.assertions(4);
-        const createTest = (_: {arrayInp: any[]; callback: (..._: any[]) => any; expected: any[]}) => ({
+        const createTest = (_: { arrayInp: any[]; callback: (..._: any[]) => any; expected: any[] }) => ({
             run: () => expect(ArrayUtil.compactMap(_.arrayInp, _.callback)).toStrictEqual(_.expected),
         });
         createTest({
             arrayInp: [],
-            callback: _ => _,
+            callback: (_) => _,
             expected: [],
         }).run();
         createTest({
@@ -317,8 +324,8 @@ describe("ArrayUtil.compactMap", () => {
             expected: ["A", "B", "CDEFG"],
         }).run();
         createTest({
-            arrayInp: [{p: 1}, {p: 2}, {p: 3}],
-            callback: _ => _.p,
+            arrayInp: [{ p: 1 }, { p: 2 }, { p: 3 }],
+            callback: (_) => _.p,
             expected: [1, 2, 3],
         }).run();
     });
@@ -366,23 +373,23 @@ describe("ArrayUtil.compactMap", () => {
 
     test("only removes undefined, null, NaN from array after mapping (get property callback)", () => {
         expect.assertions(2);
-        const getP = <T>(_: {p: T}) => _.p;
-        const createTest = (_: {arrayInp: Array<{p: any}>; expected: Array<any>}) => ({
+        const getP = <T>(_: { p: T }) => _.p;
+        const createTest = (_: { arrayInp: { p: any }[]; expected: any[] }) => ({
             run: () => expect(ArrayUtil.compactMap(_.arrayInp, getP)).toStrictEqual(_.expected),
         });
         createTest({
-            arrayInp: [{p: "a"}, {p: 1}, {p: true}],
+            arrayInp: [{ p: "a" }, { p: 1 }, { p: true }],
             expected: ["a", 1, true],
         }).run();
         createTest({
-            arrayInp: [{p: NaN}, {p: null}, {p: "a"}, {p: 1}, {p: undefined}, {p: true}],
+            arrayInp: [{ p: NaN }, { p: null }, { p: "a" }, { p: 1 }, { p: undefined }, { p: true }],
             expected: ["a", 1, true],
         }).run();
     });
 
     test("only removes undefined, null, NaN from array after mapping (complex computation callback)", () => {
         expect.assertions(4);
-        const createTest = (_: {arrayInp: any[]; callback: (..._: any[]) => any; expected: any[]}) => ({
+        const createTest = (_: { arrayInp: any[]; callback: (..._: any[]) => any; expected: any[] }) => ({
             run: () => expect(ArrayUtil.compactMap(_.arrayInp, _.callback)).toStrictEqual(_.expected),
         });
         createTest({
@@ -392,7 +399,7 @@ describe("ArrayUtil.compactMap", () => {
         }).run();
         createTest({
             arrayInp: ["0.5", "1.5", "2.5", "not-a-number", "also-not-a-number"],
-            callback: _ => Math.round(parseFloat(_) * 2),
+            callback: (_) => Math.round(parseFloat(_) * 2),
             expected: [1, 3, 5],
         }).run();
         createTest({
@@ -401,15 +408,15 @@ describe("ArrayUtil.compactMap", () => {
             expected: ["", "", "OOOOO"],
         }).run();
         createTest({
-            arrayInp: [{name: "A"}, {name: "B"}, {name: "AB"}],
-            callback: _ => (_.name.length > 1 ? null : {foo: _.name.toLowerCase()}),
-            expected: [{foo: "a"}, {foo: "b"}],
+            arrayInp: [{ name: "A" }, { name: "B" }, { name: "AB" }],
+            callback: (_) => (_.name.length > 1 ? null : { foo: _.name.toLowerCase() }),
+            expected: [{ foo: "a" }, { foo: "b" }],
         }).run();
     });
 });
 
 describe("ArrayUtil.range", () => {
-    type TestEachRowSchema = {size: number; fromIndex?: number; expected: number[]};
+    type TestEachRowSchema = { size: number; fromIndex?: number; expected: number[] };
 
     test.each`
         size | fromIndex    | expected
@@ -418,7 +425,7 @@ describe("ArrayUtil.range", () => {
         ${0} | ${4}         | ${[]}
         ${3} | ${undefined} | ${[0, 1, 2]}
         ${0} | ${undefined} | ${[]}
-    `("returns expected array from range($size, $fromIndex)", ({size, fromIndex, expected}: TestEachRowSchema) => {
+    `("returns expected array from range($size, $fromIndex)", ({ size, fromIndex, expected }: TestEachRowSchema) => {
         expect(ArrayUtil.range(size, fromIndex)).toStrictEqual(expected);
     });
 });

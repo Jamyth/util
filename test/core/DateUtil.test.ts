@@ -1,4 +1,4 @@
-import {DateUtil} from "../../src/core/DateUtil";
+import { DateUtil } from "../../src/core/DateUtil";
 
 describe("DateUtil.daysBeforeToday", () => {
     test("returns correct date", () => {

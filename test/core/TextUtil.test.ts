@@ -1,4 +1,4 @@
-import {TextUtil} from "../../src/core/TextUtil";
+import { TextUtil } from "../../src/core/TextUtil";
 
 test("Truncate", () => {
     expect(() => TextUtil.truncate("waiting", 4.2)).toThrow();
@@ -47,7 +47,7 @@ test("stripHTML", () => {
     &nbsp;&nbsp;
     修改并重发站内信&nbsp;：&nbsp;信内站发重并改修</span></p>
 
-    &nbsp;&nbsp;`)
+    &nbsp;&nbsp;`),
     ).toEqual("修改并重发站内信 ： 信内站发重并改修");
     expect(
         TextUtil.stripHTML(`
@@ -55,6 +55,6 @@ test("stripHTML", () => {
             <p>321,
                 <a>123</a>
             </p>
-        </html>`)
+        </html>`),
     ).toBe("321,\n123");
 });

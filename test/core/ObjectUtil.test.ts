@@ -1,68 +1,68 @@
-import {ObjectUtil} from "../../src/core/ObjectUtil";
+import { ObjectUtil } from "../../src/core/ObjectUtil";
 
 test("First Key", () => {
     expect(ObjectUtil.firstKey({})).toBeNull();
-    expect(ObjectUtil.firstKey({a: 1, b: 2, c: 3})).toBe("a");
-    expect(ObjectUtil.firstKey({b: 2, a: 1, c: 3})).toBe("b");
+    expect(ObjectUtil.firstKey({ a: 1, b: 2, c: 3 })).toBe("a");
+    expect(ObjectUtil.firstKey({ b: 2, a: 1, c: 3 })).toBe("b");
 });
 
 test("Object Safe Assign", () => {
-    const object = {a: 1, b: 2, c: 3};
-    ObjectUtil.safeAssign(object, {a: 10});
-    expect(object).toEqual({a: 10, b: 2, c: 3});
+    const object = { a: 1, b: 2, c: 3 };
+    ObjectUtil.safeAssign(object, { a: 10 });
+    expect(object).toEqual({ a: 10, b: 2, c: 3 });
 
-    ObjectUtil.safeAssign(object, {c: -10});
-    expect(object).toEqual({a: 10, b: 2, c: -10});
+    ObjectUtil.safeAssign(object, { c: -10 });
+    expect(object).toEqual({ a: 10, b: 2, c: -10 });
 
     ObjectUtil.safeAssign(object, null);
-    expect(object).toEqual({a: 10, b: 2, c: -10});
+    expect(object).toEqual({ a: 10, b: 2, c: -10 });
 
     // Type infer test
-    const test1: {a: number} | undefined = {a: 23};
-    ObjectUtil.safeAssign(test1, {a: 1});
+    const test1: { a: number } | undefined = { a: 23 };
+    ObjectUtil.safeAssign(test1, { a: 1 });
 
-    const test2: {a: number; b: boolean} | null = {a: 23, b: false};
+    const test2: { a: number; b: boolean } | null = { a: 23, b: false };
     ObjectUtil.safeAssign(test2, {});
-    ObjectUtil.safeAssign(test2, {a: 1});
+    ObjectUtil.safeAssign(test2, { a: 1 });
     ObjectUtil.safeAssign(test2, null);
-    ObjectUtil.safeAssign(test2, {b: false});
-    ObjectUtil.safeAssign(test2, {a: -1, b: false});
+    ObjectUtil.safeAssign(test2, { b: false });
+    ObjectUtil.safeAssign(test2, { a: -1, b: false });
 
     // @ts-expect-error
-    ObjectUtil.safeAssign(test2, {a: false});
+    ObjectUtil.safeAssign(test2, { a: false });
     // @ts-expect-error
-    ObjectUtil.safeAssign(test2, {foo: 10});
+    ObjectUtil.safeAssign(test2, { foo: 10 });
     // @ts-expect-error
     ObjectUtil.safeAssign(null, {});
     // @ts-expect-error
     ObjectUtil.safeAssign(undefined, {});
 
-    const makeState = (): {data: Array<{foo: string; bar: number}>; filter: {pageIndex: number}} => {
-        return {data: [], filter: {pageIndex: 1}};
+    const makeState = (): { data: { foo: string; bar: number }[]; filter: { pageIndex: number } } => {
+        return { data: [], filter: { pageIndex: 1 } };
     };
-    const newData = [{foo: "one", bar: 1}];
+    const newData = [{ foo: "one", bar: 1 }];
 
-    ObjectUtil.safeAssign(makeState(), {data: newData});
-
-    // @ts-expect-error
-    ObjectUtil.safeAssign(makeState(), {wrong: ""});
+    ObjectUtil.safeAssign(makeState(), { data: newData });
 
     // @ts-expect-error
-    ObjectUtil.safeAssign(makeState(), {data: newData, wrong: ""});
+    ObjectUtil.safeAssign(makeState(), { wrong: "" });
+
+    // @ts-expect-error
+    ObjectUtil.safeAssign(makeState(), { data: newData, wrong: "" });
 });
 
 test("Map To Object", () => {
-    expect(ObjectUtil.toObject({a: 1, b: 2, c: 3}, (key, item, index) => index)).toEqual({a: 0, b: 1, c: 2});
-    expect(ObjectUtil.toObject({a: "a", b: 2, c: 3}, (key, item) => item)).toEqual({a: "a", b: 2, c: 3});
-    expect(ObjectUtil.toObject({a: 1, b: 2, c: 3}, key => key)).toEqual({a: "a", b: "b", c: "c"});
-    expect(ObjectUtil.toObject({a: 1, b: 2, c: undefined}, (key, item) => item)).not.toHaveProperty("c");
-    expect(ObjectUtil.toObject({a: 1, b: 2}, (key, item) => item)).not.toHaveProperty("c");
+    expect(ObjectUtil.toObject({ a: 1, b: 2, c: 3 }, (key, item, index) => index)).toEqual({ a: 0, b: 1, c: 2 });
+    expect(ObjectUtil.toObject({ a: "a", b: 2, c: 3 }, (key, item) => item)).toEqual({ a: "a", b: 2, c: 3 });
+    expect(ObjectUtil.toObject({ a: 1, b: 2, c: 3 }, (key) => key)).toEqual({ a: "a", b: "b", c: "c" });
+    expect(ObjectUtil.toObject({ a: 1, b: 2, c: undefined }, (key, item) => item)).not.toHaveProperty("c");
+    expect(ObjectUtil.toObject({ a: 1, b: 2 }, (key, item) => item)).not.toHaveProperty("c");
 });
 
 test("Map To Array", () => {
-    const object = {a: "a", b: "b", 1: "c", 2: "d", j: undefined};
+    const object = { a: "a", b: "b", 1: "c", 2: "d", j: undefined };
 
-    expect(ObjectUtil.toArray(object, key => key)).toEqual(["1", "2", "a", "b"]);
+    expect(ObjectUtil.toArray(object, (key) => key)).toEqual(["1", "2", "a", "b"]);
     expect(ObjectUtil.toArray(object, (key, item) => item)).toEqual(["c", "d", "a", "b"]);
     expect(ObjectUtil.toArray(object, (key, item, index) => index)).toEqual([0, 1, 2, 3]);
     // @ts-expect-error
@@ -73,21 +73,31 @@ test("Map To Array", () => {
         B = "B",
         C = "C",
     }
-    const fullMap: {[key in TestEnum]: string | null} = {[TestEnum.A]: "AAA", [TestEnum.B]: "BBB", [TestEnum.C]: null};
-    const partialMap: {[key in TestEnum]?: string | null} = {[TestEnum.A]: "AAA"};
+    const fullMap: { [key in TestEnum]: string | null } = {
+        [TestEnum.A]: "AAA",
+        [TestEnum.B]: "BBB",
+        [TestEnum.C]: null,
+    };
+    const partialMap: { [key in TestEnum]?: string | null } = { [TestEnum.A]: "AAA" };
     // Item here is strict "string" type, no undefined
-    expect(ObjectUtil.toArray(fullMap, (key, item) => (item === null ? "NULL" : item.toLowerCase()))).toEqual(["aaa", "bbb", "NULL"]);
-    expect(ObjectUtil.toArray(partialMap, (key, item) => (item === null ? "NULL" : item.toLowerCase()))).toEqual(["aaa"]);
+    expect(ObjectUtil.toArray(fullMap, (key, item) => (item === null ? "NULL" : item.toLowerCase()))).toEqual([
+        "aaa",
+        "bbb",
+        "NULL",
+    ]);
+    expect(ObjectUtil.toArray(partialMap, (key, item) => (item === null ? "NULL" : item.toLowerCase()))).toEqual([
+        "aaa",
+    ]);
 });
 
 test("Check Is Empty", () => {
     expect(ObjectUtil.isEmpty({})).toBe(true);
-    expect(ObjectUtil.isEmpty({a: 1})).toBe(false);
+    expect(ObjectUtil.isEmpty({ a: 1 })).toBe(false);
 });
 
 test("Find Key", () => {
-    const obj = {a: 1, b: "1", c: "a", d: [1, 2, 3], e: undefined};
-    expect(ObjectUtil.findKey({a: 1}, 2)).toBe(null);
+    const obj = { a: 1, b: "1", c: "a", d: [1, 2, 3], e: undefined };
+    expect(ObjectUtil.findKey({ a: 1 }, 2)).toBe(null);
     expect(ObjectUtil.findKey(obj, 1)).toBe("a");
     expect(ObjectUtil.findKey(obj, obj["d"])).toBe("d");
     expect(ObjectUtil.findKey(obj, [1, 2, 3])).toBe(null);
@@ -96,7 +106,7 @@ test("Find Key", () => {
 });
 
 test("Deep Clone With Cycle", () => {
-    const obj: {[key: string]: any} = {a: 1, b: []};
+    const obj: { [key: string]: any } = { a: 1, b: [] };
     obj.c = obj;
     expect(() => ObjectUtil.deepClone(obj)).toThrow();
 });
@@ -105,7 +115,7 @@ test("Deep Clone (Object)", () => {
     const date = new Date();
     const fn = () => {};
     const object = {
-        a: {a1: 12},
+        a: { a1: 12 },
         b: ["x", "y", "z"],
         c: date,
         d: fn,
@@ -141,7 +151,7 @@ test("Deep Clone (Object)", () => {
 });
 
 test("Deep Clone (Array)", () => {
-    const list = [{v: 10}, {v: 11}, {v: 12}];
+    const list = [{ v: 10 }, { v: 11 }, { v: 12 }];
     expect(ObjectUtil.deepClone(list)).toEqual(list);
 
     const clonedList = ObjectUtil.deepClone(list);
@@ -151,7 +161,7 @@ test("Deep Clone (Array)", () => {
 });
 
 test("Sort by keys", () => {
-    const object = {b: "5", a: {a1: ["2", "1", "5"], a2: {name: "test", id: "20200201"}}, d: 25, c: [1, 5, 4, 3]};
+    const object = { b: "5", a: { a1: ["2", "1", "5"], a2: { name: "test", id: "20200201" } }, d: 25, c: [1, 5, 4, 3] };
     let sortedObject = ObjectUtil.sortByKeys(object, ["a", "b", "c", "d"]);
     expect(Object.keys(sortedObject)).toEqual(["a", "b", "c", "d"]);
     expect(sortedObject).toEqual(object);
@@ -167,7 +177,7 @@ test("Sort by keys", () => {
 });
 
 test("For each stop when callback return false", () => {
-    const object = {a: "a", b: "b", c: "c"};
+    const object = { a: "a", b: "b", c: "c" };
     let lastVal: string = "";
 
     ObjectUtil.forEach(object, (key, value, index) => {

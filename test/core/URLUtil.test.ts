@@ -1,7 +1,7 @@
-import {URLUtil} from "../../src/core/URLUtil";
+import { URLUtil } from "../../src/core/URLUtil";
 
 describe("URLUtil.transformOriginPrefix", () => {
-    type TestEachRowSchema = {url: string; args: [any, any, ...any[]]; expected: any};
+    type TestEachRowSchema = { url: string; args: [any, any, ...any[]]; expected: any };
 
     test.each`
         url                                   | args
@@ -12,7 +12,7 @@ describe("URLUtil.transformOriginPrefix", () => {
         ${"https://www.google.com/game"}      | ${["www", "m"]}
         ${"https://www.google.com#hash"}      | ${["www", "m"]}
         ${"https://www.google.com?query=abc"} | ${["www", "m"]}
-    `('throws error from transformOriginPrefix("$url", ...$args)', ({url, args}: TestEachRowSchema) => {
+    `('throws error from transformOriginPrefix("$url", ...$args)', ({ url, args }: TestEachRowSchema) => {
         expect(() => URLUtil.transformOriginPrefix(url, ...args)).toThrow();
     });
 
@@ -53,7 +53,7 @@ describe("URLUtil.transformOriginPrefix", () => {
         ${"https://www.google.com"}           | ${["www", "m", ""]}        | ${"https://m.google.com"}
         ${"https://www.google.com"}           | ${["m", "chat", ""]}       | ${null}
         ${"http://www.google.com"}            | ${["www", "chat", "wss"]}  | ${"wss://chat.google.com"}
-    `('returns expected from transformOriginPrefix("$url", ...$args)', ({url, args, expected}: TestEachRowSchema) => {
+    `('returns expected from transformOriginPrefix("$url", ...$args)', ({ url, args, expected }: TestEachRowSchema) => {
         expect(URLUtil.transformOriginPrefix(url, ...args)).toBe(expected);
     });
 });

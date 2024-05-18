@@ -1,30 +1,35 @@
-import type { AnyFunctionDecorator } from "./type";
-
 /**
  * For pure functions:
  *
  * Memoize the last computed result, and return the same value if given the same input.
  * Input equality is based on JSON.stringify by default.
  */
+const MemoCacheKey = Symbol("MemoCacheKey");
 const defaultMemoKeyGenerator = (args: any[]) => (args.length ? JSON.stringify(args) : "");
-export function Memo(memoKeyGenerator: (args: any[]) => string = defaultMemoKeyGenerator): AnyFunctionDecorator {
-    return (target, propertyKey, descriptor) => {
-        /**
-         * For latest decorator spec, there is only one "target" parameter, which has "descriptor" property.
-         *      https://tc39.github.io/proposal-decorators/#sec-decorator-functions-element-descriptor
-         *      https://github.com/tc39/proposal-decorators/blob/master/METAPROGRAMMING.md
-         */
-        const realDescriptor = descriptor || (target as any).descriptor;
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- function must be present
-        const fn = realDescriptor.value!;
-        const cache = {};
-        realDescriptor.value = function (...args: any[]) {
-            const paramKey = memoKeyGenerator(args);
-            if (!cache[paramKey]) {
-                cache[paramKey] = fn.apply(this, args);
-            }
-            return cache[paramKey];
-        };
-        return descriptor || target;
+type FunctionResultCacheStore<Fn> = Map<Fn, Map<string, any>>;
+
+export function Memo<This, Args extends any[], Return, Fn extends (this: This, ...args: Args) => Return>(
+    fn: Fn,
+    context: ClassMethodDecoratorContext<This, Fn>,
+) {
+    context.addInitializer(function (this) {
+        this[MemoCacheKey] = new Map();
+    });
+    return function (this: This, ...args: Args) {
+        const paramKey = defaultMemoKeyGenerator(args);
+        const store: FunctionResultCacheStore<Fn> = this[MemoCacheKey];
+
+        let functionCache = store.get(fn);
+
+        if (!functionCache) {
+            functionCache = new Map();
+            store.set(fn, functionCache);
+        }
+
+        if (!functionCache.has(paramKey)) {
+            functionCache.set(paramKey, fn.apply(this, args));
+        }
+
+        return functionCache.get(paramKey);
     };
 }

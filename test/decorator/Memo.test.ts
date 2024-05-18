@@ -1,15 +1,15 @@
-import {Memo} from "../../src/decorator/Memo";
+import { Memo } from "../../src/decorator/Memo";
 
 class Foo {
     // To test if "this" works in the function scope
     private n: number = 20;
 
-    @Memo()
+    @Memo
     rand(trueOrFalse: boolean): string {
         return Math.random().toFixed(10) + "-" + (trueOrFalse ? this.n + 1 : this.n - 1).toString();
     }
 
-    @Memo()
+    @Memo
     sumWithRand(a: number, b: number, c: number): number {
         return a + b + c + Math.random();
     }

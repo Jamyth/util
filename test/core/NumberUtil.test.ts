@@ -1,19 +1,19 @@
-import {NumberUtil} from "../../src/core/NumberUtil";
+import { NumberUtil } from "../../src/core/NumberUtil";
 
 test("Clamp", () => {
-    const t1 = {value: 10, min: 100, max: 200};
+    const t1 = { value: 10, min: 100, max: 200 };
     expect(NumberUtil.clamp(t1.value, t1.min, t1.max)).toBe(t1.min);
-    const t2 = {value: 0.3 - 0.2, min: 0.1, max: 200};
+    const t2 = { value: 0.3 - 0.2, min: 0.1, max: 200 };
     expect(NumberUtil.clamp(t2.value, t2.min, t2.max)).toBe(t2.min);
 
-    const t3 = {value: 1000, min: 100, max: 200};
+    const t3 = { value: 1000, min: 100, max: 200 };
     expect(NumberUtil.clamp(t3.value, t3.min, t3.max)).toBe(t3.max);
-    const t4 = {value: 0.1 + 0.2, min: 0, max: 0.3};
+    const t4 = { value: 0.1 + 0.2, min: 0, max: 0.3 };
     expect(NumberUtil.clamp(t4.value, t4.min, t4.max)).toBe(t4.max);
 
-    const t5 = {value: 150, min: 100, max: 200};
+    const t5 = { value: 150, min: 100, max: 200 };
     expect(NumberUtil.clamp(t5.value, t5.min, t5.max)).toBe(t5.value);
-    const t6 = {value: 0.1 + 0.2, min: 0, max: 1};
+    const t6 = { value: 0.1 + 0.2, min: 0, max: 1 };
     expect(NumberUtil.clamp(t6.value, t6.min, t6.max)).toBe(t6.value);
 
     const dontCare = 0;
@@ -67,7 +67,7 @@ describe("NumberUtil.rounding", () => {
         expect(() => NumberUtil.rounding(10, "round", 1.1)).toThrow();
     });
 
-    type TestEachRowSchema = {value: number; algorithm: "round" | "ceil" | "floor"; maxScale: any; expected: number};
+    type TestEachRowSchema = { value: number; algorithm: "round" | "ceil" | "floor"; maxScale: any; expected: number };
     test.each`
         value                 | algorithm  | maxScale | expected
         ${3.65}               | ${"floor"} | ${0}     | ${3}
@@ -89,9 +89,12 @@ describe("NumberUtil.rounding", () => {
         ${4.975}              | ${"round"} | ${2}     | ${4.98}
         ${2136.4649681528663} | ${"round"} | ${2}     | ${2136.46}
         ${213646.49681528663} | ${"round"} | ${10}    | ${213646.4968152866}
-    `("rounding($value, '$algorithm', $maxScale) returns $expected", ({value, algorithm, maxScale, expected}: TestEachRowSchema) => {
-        expect(NumberUtil.rounding(value, algorithm, maxScale)).toBe(expected);
-    });
+    `(
+        "rounding($value, '$algorithm', $maxScale) returns $expected",
+        ({ value, algorithm, maxScale, expected }: TestEachRowSchema) => {
+            expect(NumberUtil.rounding(value, algorithm, maxScale)).toBe(expected);
+        },
+    );
 });
 
 describe("NumberUtil.roundingToString", () => {
@@ -100,7 +103,7 @@ describe("NumberUtil.roundingToString", () => {
         expect(() => NumberUtil.roundingToString(10, "round", 1.1)).toThrow();
     });
 
-    type TestEachRowSchema = {value: number; algorithm: "round" | "ceil" | "floor"; scale: any; expected: number};
+    type TestEachRowSchema = { value: number; algorithm: "round" | "ceil" | "floor"; scale: any; expected: number };
     test.each`
         value    | algorithm  | scale | expected
         ${3.65}  | ${"floor"} | ${0}  | ${"3"}
@@ -117,7 +120,10 @@ describe("NumberUtil.roundingToString", () => {
         ${1.664} | ${"round"} | ${3}  | ${"1.664"}
         ${1.664} | ${"round"} | ${4}  | ${"1.6640"}
         ${4.975} | ${"round"} | ${2}  | ${"4.98"}
-    `("rounding($value, '$algorithm', $scale) returns '$expected'", ({value, algorithm, scale, expected}: TestEachRowSchema) => {
-        expect(NumberUtil.roundingToString(value, algorithm, scale)).toBe(expected);
-    });
+    `(
+        "rounding($value, '$algorithm', $scale) returns '$expected'",
+        ({ value, algorithm, scale, expected }: TestEachRowSchema) => {
+            expect(NumberUtil.roundingToString(value, algorithm, scale)).toBe(expected);
+        },
+    );
 });

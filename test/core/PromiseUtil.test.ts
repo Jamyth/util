@@ -1,7 +1,9 @@
-import {PromiseUtil} from "../../src/core/PromiseUtil";
+import { PromiseUtil } from "../../src/core/PromiseUtil";
 
-const sleep = <T>(ms: number, resolvedValue: T) => new Promise<T>(resolve => setTimeout(() => resolve(resolvedValue), ms));
-const sleepThenReject = <T>(ms: number, rejectedValue: T) => new Promise<T>((resolve, reject) => setTimeout(() => reject(rejectedValue), ms));
+const sleep = <T>(ms: number, resolvedValue: T) =>
+    new Promise<T>((resolve) => setTimeout(() => resolve(resolvedValue), ms));
+const sleepThenReject = <T>(ms: number, rejectedValue: T) =>
+    new Promise<T>((resolve, reject) => setTimeout(() => reject(rejectedValue), ms));
 
 /**
  * Return statement is required for promise-based tests.
@@ -9,7 +11,7 @@ const sleepThenReject = <T>(ms: number, rejectedValue: T) => new Promise<T>((res
  */
 
 test("Promises Race Success", () => {
-    const promises: Array<Promise<string>> = [
+    const promises: Promise<string>[] = [
         sleep(500, "a"),
         sleep(400, "fastest"),
         sleep(800, "b"),
@@ -22,7 +24,7 @@ test("Promises Race Success", () => {
 });
 
 test("Promises Race Success (All Errors)", () => {
-    const promises: Array<Promise<string>> = [sleepThenReject(300, "error-300"), sleepThenReject(500, "error-500")];
+    const promises: Promise<string>[] = [sleepThenReject(300, "error-300"), sleepThenReject(500, "error-500")];
 
     return expect(PromiseUtil.raceSuccess(promises)).rejects.toHaveLength(promises.length);
 });
