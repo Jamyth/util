@@ -1,32 +1,35 @@
 {
     "name": "@iamyth/util",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "main": "./dist/cjs/index.js",
     "module": "./dist/esm/index.js",
     "type": "module",
     "files": [
         "dist"
     ],
+    "engines": {
+        "node": ">=20"
+    },
     "exports": {
         ".": {
             "import": "./dist/esm/index.js",
-            "require": "./cjs/cjs/index.js",
-            "types": "./dist/cjs/index.d.ts"
+            "require": "./dist/cjs/index.js",
+            "types": "./dist/type/index.d.ts"
         },
         "./core": {
             "import": "./dist/esm/index.js",
             "require": "./dist/cjs/index.js",
-            "types": "./dist/cjs/index.d.ts"
+            "types": "./dist/type/index.d.ts"
         },
         "./react": {
             "import": "./dist/esm/react.js",
             "require": "./dist/cjs/react.js",
-            "types": "./dist/cjs/index.d.ts"
+            "types": "./dist/type/index.d.ts"
         },
         "./web": {
             "import": "./dist/esm/browser.js",
             "require": "./dist/cjs/browser.js",
-            "types": "./dist/cjs/index.d.ts"
+            "types": "./dist/type/index.d.ts"
         }
     },
     "license": "MIT",

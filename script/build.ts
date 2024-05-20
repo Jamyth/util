@@ -1,5 +1,5 @@
 import { join } from "node:path";
-import { existsSync, statSync, rmSync, exists } from "node:fs";
+import { existsSync, statSync, rmSync } from "node:fs";
 import { spawn } from "./spawn.js";
 import { createConsoleLogger } from "@iamyth/logger";
 
@@ -23,14 +23,17 @@ function cleanup() {
 }
 
 function buildCJS() {
+    logger.task("Building for CJS");
     spawn("esbuild", [FilePath.sourceGlob, `--outdir=${FilePath.cjsDir}`, "--format=cjs"], "");
 }
 
 function buildESM() {
+    logger.task("Building for ESM");
     spawn("esbuild", [FilePath.sourceGlob, `--outdir=${FilePath.esmDir}`, "--format=esm"], "");
 }
 
 function buildType() {
+    logger.task("Building Type Definitions");
     spawn("tsc", ["--build", FilePath.workspaceTsConfig], "Build Type Failed");
 }
 

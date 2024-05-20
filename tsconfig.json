@@ -9,10 +9,7 @@
             "path": "./test"
         },
         {
-            "path": "./config/tsconfig.cjs.json"
-        },
-        {
-            "path": "./config/tsconfig.esm.json"
+            "path": "./config/tsconfig.src.json"
         }
     ]
 }

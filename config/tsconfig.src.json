@@ -8,7 +8,7 @@
         "inlineSources": true,
         "declarationMap": true,
         "rootDir": "../src",
-        "outDir": "../dist/esm",
+        "outDir": "../dist/type",
         "jsx": "react-jsx",
 
         "ignoreDeprecations": "5.0",
